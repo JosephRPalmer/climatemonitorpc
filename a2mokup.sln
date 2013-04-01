@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "a2mokup", "a2mokup\a2mokup.vbproj", "{37D8A7C3-DB21-4308-B8FB-D721E3F4F26B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37D8A7C3-DB21-4308-B8FB-D721E3F4F26B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37D8A7C3-DB21-4308-B8FB-D721E3F4F26B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37D8A7C3-DB21-4308-B8FB-D721E3F4F26B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37D8A7C3-DB21-4308-B8FB-D721E3F4F26B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
