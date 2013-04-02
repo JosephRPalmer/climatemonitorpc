@@ -86,7 +86,7 @@ Public Class tcpCommClient
         ClientCallbackObject = callbackMethod
     End Sub
 
-    Public Sub Connect(ByVal IP_Address As String, ByVal prt As Integer)
+    Public Function Connect(ByVal IP_Address As String, ByVal prt As Integer)
         Port = prt
         IP = System.Net.IPAddress.Parse(IP_Address)
         continue_running = True
@@ -94,7 +94,8 @@ Public Class tcpCommClient
         Dim clientCommunicationThread As New Thread(AddressOf Run)
         clientCommunicationThread.Name = "ClientCommunication"
         clientCommunicationThread.Start()
-    End Sub
+        Return 1
+    End Function
 
     Public Sub StopRunning()
         continue_running = False
@@ -506,6 +507,8 @@ Public Class tcpCommClient
         isRunning = False
 
     End Sub
-    
-   
+    Public Shared Function
+
+    End Function
+
 End Class

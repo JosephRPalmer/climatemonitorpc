@@ -116,7 +116,7 @@
     <Compile Include="selectnic.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="tcpclient.vb" />
+    <Compile Include="tcpCommClient.vb" />
     <Compile Include="weatherapi.vb" />
   </ItemGroup>
   <ItemGroup>
