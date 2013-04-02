@@ -86,7 +86,7 @@ Public Class tcpCommClient
         ClientCallbackObject = callbackMethod
     End Sub
 
-    Public Shared Sub Connect(ByVal IP_Address As String, ByVal prt As Integer)
+    Public Sub Connect(ByVal IP_Address As String, ByVal prt As Integer)
         Port = prt
         IP = System.Net.IPAddress.Parse(IP_Address)
         continue_running = True

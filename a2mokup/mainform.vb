@@ -9,8 +9,8 @@
     End Sub
 
     Private Sub Apply_Click(sender As Object, e As EventArgs) Handles Apply.Click
-        tcpCommClient.Connect("127.0.0.1", 8080)
 
+        tcpCommClient.Connect("127.0.0.1", 8080)
     End Sub
 
     Private Sub Graphs_Click(sender As Object, e As EventArgs) Handles Graphs.Click
