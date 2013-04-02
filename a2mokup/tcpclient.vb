@@ -51,7 +51,7 @@ Public Class tcpCommClient
         StrToByteArray = encoding.GetBytes(text)
     End Function
 
-    Private Function BytesToString(ByVal data() As Byte) As String
+    Public Shared Function BytesToString(ByVal data() As Byte) As String
         Dim enc As New System.Text.UTF8Encoding()
         BytesToString = enc.GetString(data)
     End Function
@@ -104,27 +104,6 @@ Public Class tcpCommClient
         Return blockSize
     End Function
 
-    Public Function GetFile(ByVal _path As String) As Boolean
-
-        Do
-            If Not UserBytesToBeSentAvailable Then
-                SyncLock UserBytesToBeSent
-                    UserBytesToBeSent.Close()
-                    UserBytesToBeSent = Nothing
-                    UserBytesToBeSent = New MemoryStream(StrToByteArray("GFR:" & _path))
-                    UserOutputChannel = 254 ' Text messages / commands on channel 254
-                    UserBytesToBeSentAvailable = True
-                End SyncLock
-                Exit Do
-            End If
-
-            If theClientIsStopping() Then Exit Function
-            Application.DoEvents()
-        Loop
-
-    End Function
-
-    
     Public Function SendBytes(ByVal bytes() As Byte, Optional ByVal channel As Byte = 1) As Boolean
 
         'If channel = 0 Or channel > 250 Then
@@ -134,20 +113,22 @@ Public Class tcpCommClient
 
         Do
             If Not UserBytesToBeSentAvailable Then
-                SyncLock UserBytesToBeSent
-                    UserBytesToBeSent.Close()
-                    UserBytesToBeSent = Nothing
-                    UserBytesToBeSent = New MemoryStream(bytes)
-                    UserOutputChannel = channel
-                    UserBytesToBeSentAvailable = True
-                End SyncLock
+                'SyncLock 
+                'UserBytesToBeSent()
+                UserBytesToBeSent.Close()
+                UserBytesToBeSent = Nothing
+                UserBytesToBeSent = New MemoryStream(bytes)
+                UserOutputChannel = channel
+                UserBytesToBeSentAvailable = True
+                'End SyncLock
                 Exit Do
+                Return 1
             End If
-
+            Return 1
             If theClientIsStopping() Then Exit Function
             Application.DoEvents()
         Loop
-
+        Return 1
     End Function
 
     Private Function RcvBytes(ByVal data() As Byte, Optional ByVal dataChannel As Integer = 1) As Boolean
@@ -166,7 +147,7 @@ Public Class tcpCommClient
             ' An unexpected error.
             Debug.WriteLine("Unexpected error in Client\RcvBytes: " & ex.Message)
         End Try
-
+        Return 1
     End Function
 
    
@@ -175,6 +156,7 @@ Public Class tcpCommClient
         SystemBytesToBeSent = StrToByteArray(message)
         SystemOutputChannel = 254 ' Text messages / commands on channel 254
         SystemBytesToBeSentAvailable = True
+        Return 1
 
     End Function
 
@@ -524,15 +506,6 @@ Public Class tcpCommClient
         isRunning = False
 
     End Sub
-    Public Shared Function outputtcp(ByVal bytes() As Byte, ByVal dataChannel As Integer())
-        Dim dontReport As Boolean = False
-        If dataChannel < 251 Then
-            'Me.ListBox1.Items.Add(BytesToString(bytes))
-        ElseIf dataChannel = 255 Then
-
-        End If
-        Dim msg As String = BytesToString(bytes)
-        Dim tmp As String = ""
-    End Function
+    
    
 End Class
