@@ -9,7 +9,7 @@
     End Sub
 
     Private Sub Apply_Click(sender As Object, e As EventArgs) Handles Apply.Click
-        
+
     End Sub
 
     Private Sub Graphs_Click(sender As Object, e As EventArgs) Handles Graphs.Click

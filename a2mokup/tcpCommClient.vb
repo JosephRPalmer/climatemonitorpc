@@ -60,7 +60,7 @@ Public Class tcpCommClient
         Return isRunning
     End Function
 
-    
+
     Public Function GetLocalIpAddress() As System.Net.IPAddress
         Dim strHostName As String
         Dim addresses() As System.Net.IPAddress
@@ -151,7 +151,7 @@ Public Class tcpCommClient
         Return 1
     End Function
 
-   
+
     Private Function SendExternalSystemMessage(ByVal message As String) As Boolean
 
         SystemBytesToBeSent = StrToByteArray(message)
@@ -161,9 +161,9 @@ Public Class tcpCommClient
 
     End Function
 
-    
 
-   
+
+
 
     Private Sub GetMoreFileBytesIfAvailable()
         Dim bytesRead As Integer
@@ -208,9 +208,9 @@ Public Class tcpCommClient
         If channel = 254 Then ' Text commands / messages passed between server and client
             Dim message As String = BytesToString(bytes)
             Dim tmp As String = ""
-            
+
             ' Get File Request: The client wants us to send them a file.
-            
+
 
             'If message = "->Done" Then
             '    'FinishReceivingTheFile()
@@ -337,7 +337,7 @@ Public Class tcpCommClient
 
     End Function
 
-   
+
     Private Function GetSome(ByRef bytes() As Byte, ByVal chunkToBreakOff As Integer, _
                              ByRef bytesToBeSentAvailable As Boolean, _
                              Optional ByVal theseAreUserBytes As Boolean = False) As Byte()
@@ -372,7 +372,7 @@ Public Class tcpCommClient
 
     End Function
 
-    
+
 
     Private Sub Run()
 
