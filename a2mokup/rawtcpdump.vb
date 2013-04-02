@@ -6,7 +6,7 @@
     Public Shared Function outputtcp(ByVal bytes() As Byte, ByVal dataChannel As Integer)
         Dim dontReport As Boolean = False
         If dataChannel < 251 Then
-
+            tcpdump.text = RichTextBox1.text + (BytesToString(bytes))
             'Me.ListBox1.Items.Add(BytesToString(bytes))
         ElseIf dataChannel = 255 Then
 
@@ -17,4 +17,7 @@
     End Function
 
 
+    Private Sub rawtcpdump_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

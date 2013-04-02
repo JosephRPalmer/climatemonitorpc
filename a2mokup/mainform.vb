@@ -1,15 +1,18 @@
 ﻿Public Class mainform
     Dim uptimenumber As TimeSpan
     Dim timenow As Date = Date.Now
+    Public _Client As New tcpCommClient(AddressOf UpdateUI)
     Private Sub mainform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mainformfunctions.programstart()
+    End Sub
+    Public Sub UpdateUI(ByVal bytes() As Byte, ByVal dataChannel As Integer)
     End Sub
     Private Sub exitb_Click(sender As Object, e As EventArgs) Handles exitb.Click
         End
     End Sub
 
     Private Sub Apply_Click(sender As Object, e As EventArgs) Handles Apply.Click
-        
+        _Client.Connect("127.0.0.1", 8080)
     End Sub
 
     Private Sub Graphs_Click(sender As Object, e As EventArgs) Handles Graphs.Click

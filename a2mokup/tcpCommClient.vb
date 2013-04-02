@@ -5,7 +5,6 @@ Imports System.IO
 
 Public Class tcpCommClient
     Public errMsg As String
-
     ' Define the delegate type
     Public Delegate Sub ClientCallbackDelegate(ByVal bytes() As Byte, ByVal dataChannel As Integer)
     ' Create Delegate pointer
@@ -90,17 +89,14 @@ Public Class tcpCommClient
         Port = prt
         IP = System.Net.IPAddress.Parse(IP_Address)
         continue_running = True
-
         Dim clientCommunicationThread As New Thread(AddressOf Run)
         clientCommunicationThread.Name = "ClientCommunication"
         clientCommunicationThread.Start()
         Return 1
     End Function
-
     Public Sub StopRunning()
         continue_running = False
     End Sub
-
     Public Function GetBlocksize() As UInt16
         Return blockSize
     End Function
@@ -111,7 +107,6 @@ Public Class tcpCommClient
         '    MsgBox("Data can not be sent using channel numbers less then 1 or greater then 250.", MsgBoxStyle.Critical, "TCP_Client")
         '    Exit Function
         'End If
-
         Do
             If Not UserBytesToBeSentAvailable Then
                 'SyncLock 
@@ -160,11 +155,6 @@ Public Class tcpCommClient
         Return 1
 
     End Function
-
-    
-
-   
-
     Private Sub GetMoreFileBytesIfAvailable()
         Dim bytesRead As Integer
 
@@ -209,16 +199,6 @@ Public Class tcpCommClient
             Dim message As String = BytesToString(bytes)
             Dim tmp As String = ""
             
-            ' Get File Request: The client wants us to send them a file.
-            
-
-            'If message = "->Done" Then
-            '    'FinishReceivingTheFile()
-            '    SystemMessage("->Done")
-            'End If
-
-            ' We've been notified that no file data will be forthcoming.
-
         ElseIf channel = 251 Then ' reserved.
 
         End If
@@ -507,8 +487,6 @@ Public Class tcpCommClient
         isRunning = False
 
     End Sub
-    Public Shared Function
-
-    End Function
+    
 
 End Class
