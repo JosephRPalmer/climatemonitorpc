@@ -6,6 +6,8 @@
     Private Sub mainform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mainformfunctions.programstart()
         connecttomonitor()
+        remoteipc.Text = IP
+        portsc.Text = "8080"
     End Sub
     Private Sub connecttomonitor()
         Client = New NetComm.Client()
@@ -19,6 +21,7 @@
     End Sub
     Private Sub Connected() Handles Client.Connected
         mainformfunctions.infoinlog("Connection successful")
+        connectionc.Text = "Connected"
     End Sub
 
     Private Sub Apply_Click(sender As Object, e As EventArgs) Handles Apply.Click
@@ -29,7 +32,8 @@
         graph.Show()
     End Sub
     Private Sub lostconnection() Handles Client.Disconnected
-        mainformfunctions.infoinlog("CONNECTION LOST")
+        mainformfunctions.logfile("CONNECTION LOST")
+        connectionc.Text = "Connection Lost"
         Client = New NetComm.Client()
         Dim ID As String = "1"
         Client.Connect(IP, 8080, ID)
@@ -43,7 +47,7 @@
         emailtwoc.Clear()
     End Sub
     Private Sub handleserrors(ByVal ex As Exception) Handles Client.errEncounter
-        mainformfunctions.infoinlog(ex)
+        mainformfunctions.infoinlog(ex.ToString)
     End Sub
     Private Sub DataReceived(ByVal Data() As Byte, ByVal ID As String) Handles Client.DataReceived
         If ID = Nothing Then ID = "CCMonitor"
