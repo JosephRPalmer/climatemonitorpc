@@ -16,12 +16,13 @@
         Client.Connect(IP, 8080, ID)
     End Sub
     Private Sub exitb_Click(sender As Object, e As EventArgs) Handles exitb.Click
-
+        Client.Disconnect()
         End
     End Sub
     Private Sub Connected() Handles Client.Connected
         mainformfunctions.infoinlog("Connection successful")
         connectionc.Text = "Connected"
+        mainformfunctions.titlebar("CONNECTED")
     End Sub
 
     Private Sub Apply_Click(sender As Object, e As EventArgs) Handles Apply.Click
@@ -34,6 +35,7 @@
     Private Sub lostconnection() Handles Client.Disconnected
         mainformfunctions.logfile("CONNECTION LOST")
         connectionc.Text = "Connection Lost"
+        mainformfunctions.titlebar("CONNECTION LOST")
         Client = New NetComm.Client()
         Dim ID As String = "1"
         Client.Connect(IP, 8080, ID)
