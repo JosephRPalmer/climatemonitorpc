@@ -1,11 +1,20 @@
 ﻿Public Class mainform
     Dim uptimenumber As TimeSpan
+    Dim WithEvents Client As NetComm.Client
     Dim timenow As Date = Date.Now
     Private Sub mainform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mainformfunctions.programstart()
+        Client = New NetComm.Client()
+        Dim ID As String = "1"
+        Dim IP As String = InputBox("Enter the IP address shown on the climate monitor", "Connecting...")
+        Client.Connect(IP, 8080, ID)
+
     End Sub
     Private Sub exitb_Click(sender As Object, e As EventArgs) Handles exitb.Click
         End
+    End Sub
+    Private Sub Connected() Handles Client.Connected
+        mainformfunctions.infoinlog("Connection successful")
     End Sub
 
     Private Sub Apply_Click(sender As Object, e As EventArgs) Handles Apply.Click
@@ -22,6 +31,12 @@
         smstwoc.Clear()
         emailonec.Clear()
         emailtwoc.Clear()
+    End Sub
+    Private Sub DataReceived(ByVal Data() As Byte, ByVal ID As String) Handles Client.DataReceived
+        If ID = Nothing Then ID = "CCMonitor"
+        Dim Msg As String = NetComm.Client.ConvertFromAscii(Data)
+        'rawtcpdump.tcpdump.AppendText(ID & ": " & Msg & vbNewLine)
+        rawtcpdump.outputtcp(ID & ": " & Msg & vbNewLine)
     End Sub
     Private Sub uptimeclocktimer_Tick(sender As Object, e As EventArgs) Handles uptimeclocktimer.Tick
         Dim currentime As Date = Date.Now

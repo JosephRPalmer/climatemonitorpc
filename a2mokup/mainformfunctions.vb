@@ -85,5 +85,5 @@ Public Class mainformfunctions
         rawtcpdump.tcpdump.Text = rawtcpdump.tcpdump.Text + timestamp + data + vbCrLf
         Return 1
     End Function
-    
+
 End Class
