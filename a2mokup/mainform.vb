@@ -2,15 +2,19 @@
     Dim uptimenumber As TimeSpan
     Dim WithEvents Client As NetComm.Client
     Dim timenow As Date = Date.Now
+    Dim IP As String
     Private Sub mainform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mainformfunctions.programstart()
+        connecttomonitor()
+    End Sub
+    Private Sub connecttomonitor()
         Client = New NetComm.Client()
         Dim ID As String = "1"
-        Dim IP As String = InputBox("Enter the IP address shown on the climate monitor", "Connecting...")
+        IP = InputBox("Enter the IP address shown on the climate monitor", "Connecting...")
         Client.Connect(IP, 8080, ID)
-
     End Sub
     Private Sub exitb_Click(sender As Object, e As EventArgs) Handles exitb.Click
+
         End
     End Sub
     Private Sub Connected() Handles Client.Connected
@@ -24,6 +28,12 @@
     Private Sub Graphs_Click(sender As Object, e As EventArgs) Handles Graphs.Click
         graph.Show()
     End Sub
+    Private Sub lostconnection() Handles Client.Disconnected
+        mainformfunctions.infoinlog("CONNECTION LOST")
+        Client = New NetComm.Client()
+        Dim ID As String = "1"
+        Client.Connect(IP, 8080, ID)
+    End Sub
     Private Sub Reset_Click(sender As Object, e As EventArgs) Handles Reset.Click
         emailcheck.Checked = False
         smscheck.Checked = False
@@ -31,6 +41,9 @@
         smstwoc.Clear()
         emailonec.Clear()
         emailtwoc.Clear()
+    End Sub
+    Private Sub handleserrors(ByVal ex As Exception) Handles Client.errEncounter
+        mainformfunctions.infoinlog(ex)
     End Sub
     Private Sub DataReceived(ByVal Data() As Byte, ByVal ID As String) Handles Client.DataReceived
         If ID = Nothing Then ID = "CCMonitor"
