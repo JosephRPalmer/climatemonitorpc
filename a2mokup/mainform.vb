@@ -29,7 +29,14 @@
     Private Sub Apply_Click(sender As Object, e As EventArgs) Handles Apply.Click
 
     End Sub
-
+    Function scroltocaret(objecthandle As Object)
+        objecthandle.SelectionStart = objecthandle.Text.Length
+        objecthandle.ScrollToCaret()
+        Return 1
+    End Function
+    Private Sub textchangelog() Handles Log.TextChanged
+        scroltocaret(Me.Log)
+    End Sub
     Private Sub Graphs_Click(sender As Object, e As EventArgs) Handles Graphs.Click
         graph.Show()
     End Sub
