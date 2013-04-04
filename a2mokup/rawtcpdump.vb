@@ -20,7 +20,7 @@
         Dim format As String = "dddd.MMM.yyyy.HH.mm.ss"
         Dim timestamp As String
         timestamp = (time.ToString(format))
-        tcpdump.SaveFile("C:\tcpdump" + timestamp + ".txt", RichTextBoxStreamType.PlainText)
+        tcpdump.SaveFile("C:\Users" + timestamp + ".txt", RichTextBoxStreamType.PlainText)
     End Sub
 
     Private Sub cleartcpdump_Click(sender As Object, e As EventArgs) Handles cleartcpdump.Click

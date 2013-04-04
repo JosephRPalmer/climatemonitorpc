@@ -1,8 +1,14 @@
-﻿Public Class mainform
+﻿Imports System.Data
+Imports System.Data.SqlClient
+Imports System.Data.OleDb
+Public Class mainform
+    Dim connection As New OleDbConnection(My.Settings.db)
     Dim uptimenumber As TimeSpan
     Dim WithEvents Client As NetComm.Client
     Dim timenow As Date = Date.Now
     Dim IP As String
+    Dim thedate As New Date
+    Dim i1, i2, i3 As Integer
     Private Sub mainform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mainformfunctions.programstart()
         connecttomonitor()
@@ -27,9 +33,14 @@
     End Sub
 
     Private Sub Apply_Click(sender As Object, e As EventArgs) Handles Apply.Click
+        thedate = Date.Now
+        i1 = 3
+        i2 = 4
+        i3 = 67
+        dtahandling()
 
     End Sub
-    
+
     Private Sub textchangelog() Handles Log.TextChanged
         mainformfunctions.scroltocaret(Me.Log)
     End Sub
@@ -57,10 +68,31 @@
         mainformfunctions.infoinlog(ex.ToString)
     End Sub
     Private Sub DataReceived(ByVal Data() As Byte, ByVal ID As String) Handles Client.DataReceived
+
         If ID = Nothing Then ID = "CCMonitor"
         Dim Msg As String = NetComm.Client.ConvertFromAscii(Data)
         'rawtcpdump.tcpdump.AppendText(ID & ": " & Msg & vbNewLine)
-        rawtcpdump.outputtcp(ID & ": " & Msg & vbNewLine)
+        'check to see the message prefix
+        If Mid(Msg, 0, 5) = "DISPL" Then
+            rawtcpdump.outputtcp(ID & ": " & Msg & vbNewLine)
+        ElseIf Mid(Msg, 0, 5) = "SR2DB" Then
+
+        End If
+
+
+    End Sub
+    Private Sub dtahandling()
+        connection.Open()
+        Dim insertSQL As String = "INSERT INTO readings (Datetimeofrecord, Temperature, Humidity, Light) VALUES (@thedate, @i1, @i2, @i3)"
+        Dim command As New OleDbCommand(insertSQL, connection)
+        With command.Parameters
+            .AddWithValue("@thedate", CDate(thedate.ToString("yyyy/MM/dd hh:mm:ss")))
+            .AddWithValue("@i1", i1)
+            .AddWithValue("@i2", i2)
+            .AddWithValue("@i3", i3)
+        End With
+        command.ExecuteNonQuery()
+        connection.Close()
     End Sub
     Private Sub uptimeclocktimer_Tick(sender As Object, e As EventArgs) Handles uptimeclocktimer.Tick
         Dim currentime As Date = Date.Now
