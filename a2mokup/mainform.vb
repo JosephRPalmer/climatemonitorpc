@@ -86,7 +86,7 @@ Public Class mainform
         Dim insertSQL As String = "INSERT INTO readings (Datetimeofrecord, Temperature, Humidity, Light) VALUES (@thedate, @i1, @i2, @i3)"
         Dim command As New OleDbCommand(insertSQL, connection)
         With command.Parameters
-            .AddWithValue("@thedate", CDate(thedate.ToString("yyyy/MM/dd hh:mm:ss")))
+            .AddWithValue("@thedate", CDate(thedate.ToString("yyyy/MM/dd hh:mm:ss tt")))
             .AddWithValue("@i1", i1)
             .AddWithValue("@i2", i2)
             .AddWithValue("@i3", i3)
