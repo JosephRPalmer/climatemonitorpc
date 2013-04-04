@@ -12,7 +12,7 @@
         Return 1
     End Function
     Private Sub texchangetcpdump() Handles tcpdump.TextChanged
-        mainform.scroltocaret(Me.tcpdump)
+        mainformfunctions.scroltocaret(Me.tcpdump)
     End Sub
 
     Private Sub savetcpdump_Click(sender As Object, e As EventArgs) Handles savetcpdump.Click

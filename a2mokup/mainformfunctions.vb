@@ -85,5 +85,10 @@ Public Class mainformfunctions
         rawtcpdump.tcpdump.Text = rawtcpdump.tcpdump.Text + timestamp + data + vbCrLf
         Return 1
     End Function
+    Public Shared Function scroltocaret(objecthandle As Object)
+        objecthandle.SelectionStart = objecthandle.Text.Length
+        objecthandle.ScrollToCaret()
+        Return 1
+    End Function
 
 End Class
