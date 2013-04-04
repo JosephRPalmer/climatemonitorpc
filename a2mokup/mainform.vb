@@ -23,6 +23,7 @@
         mainformfunctions.infoinlog("Connection successful")
         connectionc.Text = "Connected"
         mainformfunctions.titlebar("CONNECTED")
+        rawtcpdump.outputtcp("CONNECTED")
     End Sub
 
     Private Sub Apply_Click(sender As Object, e As EventArgs) Handles Apply.Click
@@ -36,6 +37,7 @@
         mainformfunctions.logfile("CONNECTION LOST")
         connectionc.Text = "Connection Lost"
         mainformfunctions.titlebar("CONNECTION LOST")
+        rawtcpdump.outputtcp("CONNECTION LOST")
         Client = New NetComm.Client()
         Dim ID As String = "1"
         Client.Connect(IP, 8080, ID)
@@ -66,8 +68,6 @@
         mainformfunctions.clearcombonic()
         mainformfunctions.displaypossiblemac()
     End Sub
-
-
     Private Sub rawtcpp_Click(sender As Object, e As EventArgs) Handles rawtcpp.Click
         rawtcpdump.Show()
     End Sub
