@@ -23,8 +23,12 @@ Public Class mainform
         Client.Connect(IP, 8080, ID)
     End Sub
     Private Sub exitb_Click(sender As Object, e As EventArgs) Handles exitb.Click
-        Client.Disconnect()
-        End
+        If MsgBox(("Do you really want to exit? Exiting will close all active connections to climate monitoring devices."), MsgBoxStyle.YesNoCancel, "You are about to close connections") = MsgBoxResult.Yes Then
+            Client.Disconnect()
+            End
+        Else
+            mainformfunctions.logfile("You just tried to close all connections and exit")
+        End If
     End Sub
     Private Sub Connected() Handles Client.Connected
         mainformfunctions.infoinlog("Connection successful")
@@ -122,6 +126,7 @@ Public Class mainform
         mainformfunctions.logfile("Database Write Operation Successful")
         rawtcpdump.outputtcp("Database Write Operation Successful")
     End Sub
+
     Private Sub uptimeclocktimer_Tick(sender As Object, e As EventArgs) Handles uptimeclocktimer.Tick
         Dim currentime As Date = Date.Now
         uptimenumber = currentime.Subtract(timenow)
