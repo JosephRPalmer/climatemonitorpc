@@ -80,14 +80,17 @@ Public Class mainform
             strreceived = Msg
             prepdata()
         End If
-
-
     End Sub
     Function prepdata()
-        thedate = CDate(strreceived.Substring(6, 22))
-        i1 = CInt(strreceived.Substring(30, 1))
-        i2 = CInt(strreceived.Substring(33, 1))
-        i3 = CInt(strreceived.Substring(36, 1))
+        Dim a1, a2, a3, adate As String
+        adate = strreceived.Substring(6, 22)
+        a1 = strreceived.Substring(29, 1)
+        a2 = strreceived.Substring(31, 1)
+        a3 = strreceived.Substring(33, 1)
+        thedate = CDate(adate)
+        i1 = CInt(a1)
+        i2 = CInt(a2)
+        i3 = CInt(a3)
         dtahandling()
         Return 1
     End Function
