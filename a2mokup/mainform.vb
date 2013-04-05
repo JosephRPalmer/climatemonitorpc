@@ -74,13 +74,23 @@ Public Class mainform
         Dim Msg As String = NetComm.Client.ConvertFromAscii(Data)
         'rawtcpdump.tcpdump.AppendText(ID & ": " & Msg & vbNewLine)
         'check to see the message prefix
+        strreceived = Msg
         If Mid(Msg, 1, 5) = "DISPL" Then
-            rawtcpdump.outputtcp(ID & ": " & Msg & vbNewLine)
+            prepsystemmessage()
         ElseIf Mid(Msg, 1, 5) = "SR2DB" Then
-            strreceived = Msg
             prepdata()
+        ElseIf Mid(Msg, 1, 5) = "INFOR" Then
+
         End If
     End Sub
+    Function prepsystemmessage()
+        Dim newstr As String
+        Dim len As Integer = strreceived.Length
+        newstr = strreceived.Substring(6, len - 6)
+        rawtcpdump.outputtcp(newstr)
+        mainformfunctions.logfile(newstr)
+        Return 1
+    End Function
     Function prepdata()
         Dim a1, a2, a3, adate As String
         adate = strreceived.Substring(6, 22)
@@ -106,6 +116,8 @@ Public Class mainform
         End With
         command.ExecuteNonQuery()
         connection.Close()
+        mainformfunctions.logfile("Database Write Operation Successful")
+        rawtcpdump.outputtcp("Database Write Operation Successful")
     End Sub
     Private Sub uptimeclocktimer_Tick(sender As Object, e As EventArgs) Handles uptimeclocktimer.Tick
         Dim currentime As Date = Date.Now
