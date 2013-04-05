@@ -34,12 +34,7 @@ Public Class mainform
     End Sub
 
     Private Sub Apply_Click(sender As Object, e As EventArgs) Handles Apply.Click
-        thedate = Date.Now
-        i1 = 3
-        i2 = 4
-        i3 = 67
-        dtahandling()
-
+       
     End Sub
 
     Private Sub textchangelog() Handles Log.TextChanged
