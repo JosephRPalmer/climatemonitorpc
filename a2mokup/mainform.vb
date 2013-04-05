@@ -80,9 +80,17 @@ Public Class mainform
         ElseIf Mid(Msg, 1, 5) = "SR2DB" Then
             prepdata()
         ElseIf Mid(Msg, 1, 5) = "INFOR" Then
-
+            prepinfo()
         End If
     End Sub
+    Function prepinfo()
+        Dim newstr As String
+        Dim len As Integer = strreceived.Length
+        newstr = strreceived.Substring(6, len - 6)
+        rawtcpdump.outputtcp(newstr)
+        mainformfunctions.infoinlog(newstr)
+        Return 1
+    End Function
     Function prepsystemmessage()
         Dim newstr As String
         Dim len As Integer = strreceived.Length
