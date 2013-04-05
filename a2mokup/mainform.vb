@@ -9,6 +9,7 @@ Public Class mainform
     Dim IP As String
     Dim thedate As New Date
     Dim i1, i2, i3 As Integer
+    Dim strreceived As String
     Private Sub mainform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mainformfunctions.programstart()
         connecttomonitor()
@@ -73,14 +74,23 @@ Public Class mainform
         Dim Msg As String = NetComm.Client.ConvertFromAscii(Data)
         'rawtcpdump.tcpdump.AppendText(ID & ": " & Msg & vbNewLine)
         'check to see the message prefix
-        If Mid(Msg, 0, 5) = "DISPL" Then
+        If Mid(Msg, 1, 5) = "DISPL" Then
             rawtcpdump.outputtcp(ID & ": " & Msg & vbNewLine)
-        ElseIf Mid(Msg, 0, 5) = "SR2DB" Then
-
+        ElseIf Mid(Msg, 1, 5) = "SR2DB" Then
+            strreceived = Msg
+            prepdata()
         End If
 
 
     End Sub
+    Function prepdata()
+        thedate = CDate(strreceived.Substring(6, 22))
+        i1 = CInt(strreceived.Substring(30, 1))
+        i2 = CInt(strreceived.Substring(33, 1))
+        i3 = CInt(strreceived.Substring(36, 1))
+        dtahandling()
+        Return 1
+    End Function
     Private Sub dtahandling()
         connection.Open()
         Dim insertSQL As String = "INSERT INTO readings (Datetimeofrecord, Temperature, Humidity, Light) VALUES (@thedate, @i1, @i2, @i3)"
