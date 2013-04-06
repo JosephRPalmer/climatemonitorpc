@@ -1,6 +1,6 @@
 ﻿Imports System.Net
 Public Class mainformfunctions
-
+    
     Public Shared Function logfile(write As String)
         Dim time As DateTime = DateTime.Now
         Dim format As String = "[ddd d MMM yyyy HH:mm:ss]: "
@@ -65,7 +65,9 @@ Public Class mainformfunctions
         Return 1
     End Function
     Public Shared Function programstart()
+        Dim wea As New WeatherAPI
         resetatstart()
+        wea.writeapi()
         logfile("SYSTEM STARTED")
         mainform.uptimeclocktimer.Enabled = True
         mainform.uptimeclocktimer.Start()
@@ -75,8 +77,11 @@ Public Class mainformfunctions
         getlocalip()
         logfile("Local IP Address Captured")
         infoinlog("Checking Connection Status")
+
+        gettemperature()
         Return 1
     End Function
+    
     Public Shared Function writetcpdata(data As String)
         Dim time As DateTime = DateTime.Now
         Dim format As String = "[ddd d MMM yyyy HH:mm:ss]: "
@@ -90,5 +95,21 @@ Public Class mainformfunctions
         objecthandle.ScrollToCaret()
         Return 1
     End Function
-
+    Public Shared Function gettemperature()
+        Dim wea As New WeatherAPI
+        Dim currenttemperature As String = ""
+        'If wea.xmlstring.Substring(70, 7) = "</temp>" Then
+        '    currenttemperature = wea.xmlstring.Substring(69, 1)
+        'ElseIf wea.xmlstring.Substring(71, 7) = "</temp>" Then
+        '    currenttemperature = wea.xmlstring.Substring(69, 2)
+        'ElseIf wea.xmlstring.Substring(72, 7) = "</temp>" Then
+        '    currenttemperature = wea.xmlstring.Substring(69, 3)
+        'Else
+        '    currenttemperature = "--"
+        'End If
+        currenttemperature = wea.getvalue("<temp>", "</temp>")
+        currenttemperature = currenttemperature + " 'c"
+        mainform.temperaturec.Text = currenttemperature
+        Return 1
+    End Function
 End Class

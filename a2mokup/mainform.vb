@@ -38,7 +38,7 @@ Public Class mainform
     End Sub
 
     Private Sub Apply_Click(sender As Object, e As EventArgs) Handles Apply.Click
-       
+
     End Sub
 
     Private Sub textchangelog() Handles Log.TextChanged
@@ -145,5 +145,9 @@ Public Class mainform
     End Sub
     Private Sub rawtcpp_Click(sender As Object, e As EventArgs) Handles rawtcpp.Click
         rawtcpdump.Show()
+    End Sub
+
+    Private Sub Windspeedp_Click(sender As Object, e As EventArgs) Handles Windspeedp.Click
+
     End Sub
 End Class
