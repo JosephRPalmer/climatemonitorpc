@@ -112,19 +112,26 @@ Public Class mainform
         Return 1
     End Function
     Private Sub dtahandling()
-        connection.Open()
-        Dim insertSQL As String = "INSERT INTO readings (Datetimeofrecord, Temperature, Humidity, Light) VALUES (@thedate, @i1, @i2, @i3)"
-        Dim command As New OleDbCommand(insertSQL, connection)
-        With command.Parameters
-            .AddWithValue("@thedate", CDate(thedate.ToString("yyyy/MM/dd hh:mm:ss tt")))
-            .AddWithValue("@i1", i1)
-            .AddWithValue("@i2", i2)
-            .AddWithValue("@i3", i3)
-        End With
-        command.ExecuteNonQuery()
-        connection.Close()
-        mainformfunctions.logfile("Database Write Operation Successful")
-        rawtcpdump.outputtcp("Database Write Operation Successful")
+        Try
+            connection.Open()
+            Dim insertSQL As String = "INSERT INTO readings (Datetimeofrecord, Temperature, Humidity, Light) VALUES (@thedate, @i1, @i2, @i3)"
+            Dim command As New OleDbCommand(insertSQL, connection)
+            With command.Parameters
+                .AddWithValue("@thedate", CDate(thedate.ToString("yyyy/MM/dd hh:mm:ss tt")))
+                .AddWithValue("@i1", i1)
+                .AddWithValue("@i2", i2)
+                .AddWithValue("@i3", i3)
+            End With
+            command.ExecuteNonQuery()
+            connection.Close()
+            mainformfunctions.logfile("Database Write Operation Successful")
+            rawtcpdump.outputtcp("Database Write Operation Successful")
+        Catch ex As Exception
+            mainformfunctions.logfile("Database Write Operation Failed.")
+            rawtcpdump.outputtcp("Database Write Operation Failed. Technical Data: " + ex.TargetSite.ToString)
+
+        End Try
+
     End Sub
 
     Private Sub uptimeclocktimer_Tick(sender As Object, e As EventArgs) Handles uptimeclocktimer.Tick
