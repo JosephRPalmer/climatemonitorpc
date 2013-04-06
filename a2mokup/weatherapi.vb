@@ -3,8 +3,10 @@ Imports System.IO
 Imports System.Text
 Imports System.Net
 Public Class WeatherAPI
-    Friend xmlstring As String = " "
+    Public xmlstring As String
+
     Sub writeapi()
+
         Dim windspeed As String = ""
         Dim postfirst As String = "PR9"
         Dim inStream As StreamReader
@@ -15,6 +17,7 @@ Public Class WeatherAPI
         inStream = New StreamReader(webresponse.GetResponseStream())
         xmlstring = inStream.ReadToEnd.ToString()
         My.Computer.FileSystem.WriteAllText("C:\Users\Joseph\Test.txt", xmlstring, True)
+
         ''concatonates temperature correctly
         'Dim currenttemperature As String = ""
         'If wea.xmlstring.Substring(70, 7) = "</temp>" Then
@@ -34,12 +37,13 @@ Public Class WeatherAPI
         'mainformfunctions.infoinlog("Temperature in " + postfirst + " = " + currenttemperature)
     End Sub
     Function getvalue(initialtag As String, finaltag As String) As String
+        'should parse xml feed
         Dim temp As String = xmlstring
         Do While temp.Substring(0, 7) <> initialtag
             temp.Remove(0, 1)
         Loop
         temp.Remove(0, 7)
-        Dim i As Integer
+        Dim i As Integer = 0
         Do While temp.Substring(i, finaltag.Length) <> finaltag
             i += 1
         Loop
