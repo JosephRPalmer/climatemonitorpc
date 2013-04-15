@@ -62,18 +62,18 @@ Partial Class mainform
         Me.uptimeclocktimer = New System.Windows.Forms.Timer(Me.components)
         Me.reselectnic = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.temperaturep = New System.Windows.Forms.Label()
-        Me.Windspeedp = New System.Windows.Forms.Label()
-        Me.EventLog1 = New System.Diagnostics.EventLog()
-        Me.humidityp = New System.Windows.Forms.Label()
-        Me.pressurep = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.outlookp = New System.Windows.Forms.Label()
-        Me.outlookc = New System.Windows.Forms.TextBox()
-        Me.temperaturec = New System.Windows.Forms.Label()
-        Me.humididtyc = New System.Windows.Forms.Label()
-        Me.pressurec = New System.Windows.Forms.Label()
         Me.windspeedc = New System.Windows.Forms.Label()
+        Me.pressurec = New System.Windows.Forms.Label()
+        Me.humididtyc = New System.Windows.Forms.Label()
+        Me.temperaturec = New System.Windows.Forms.Label()
+        Me.outlookc = New System.Windows.Forms.TextBox()
+        Me.outlookp = New System.Windows.Forms.Label()
+        Me.pressurep = New System.Windows.Forms.Label()
+        Me.humidityp = New System.Windows.Forms.Label()
+        Me.Windspeedp = New System.Windows.Forms.Label()
+        Me.temperaturep = New System.Windows.Forms.Label()
+        Me.EventLog1 = New System.Diagnostics.EventLog()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.networksetting.SuspendLayout()
         Me.alertsettings.SuspendLayout()
         Me.systemstatus.SuspendLayout()
@@ -450,97 +450,21 @@ Partial Class mainform
         Me.GroupBox1.Controls.Add(Me.humidityp)
         Me.GroupBox1.Controls.Add(Me.Windspeedp)
         Me.GroupBox1.Controls.Add(Me.temperaturep)
-        Me.GroupBox1.Location = New System.Drawing.Point(34, 416)
+        Me.GroupBox1.Location = New System.Drawing.Point(25, 416)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(776, 94)
+        Me.GroupBox1.Size = New System.Drawing.Size(785, 94)
         Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Current Weather"
         '
-        'temperaturep
+        'windspeedc
         '
-        Me.temperaturep.AutoSize = True
-        Me.temperaturep.Location = New System.Drawing.Point(7, 25)
-        Me.temperaturep.Name = "temperaturep"
-        Me.temperaturep.Size = New System.Drawing.Size(104, 13)
-        Me.temperaturep.TabIndex = 0
-        Me.temperaturep.Text = "Current Temperature"
-        '
-        'Windspeedp
-        '
-        Me.Windspeedp.AutoSize = True
-        Me.Windspeedp.Location = New System.Drawing.Point(265, 57)
-        Me.Windspeedp.Name = "Windspeedp"
-        Me.Windspeedp.Size = New System.Drawing.Size(98, 13)
-        Me.Windspeedp.TabIndex = 1
-        Me.Windspeedp.Text = "Current Windspeed"
-        '
-        'EventLog1
-        '
-        Me.EventLog1.SynchronizingObject = Me
-        '
-        'humidityp
-        '
-        Me.humidityp.AutoSize = True
-        Me.humidityp.Location = New System.Drawing.Point(7, 57)
-        Me.humidityp.Name = "humidityp"
-        Me.humidityp.Size = New System.Drawing.Size(84, 13)
-        Me.humidityp.TabIndex = 2
-        Me.humidityp.Text = "Current Humidity"
-        '
-        'pressurep
-        '
-        Me.pressurep.AutoSize = True
-        Me.pressurep.Location = New System.Drawing.Point(265, 25)
-        Me.pressurep.Name = "pressurep"
-        Me.pressurep.Size = New System.Drawing.Size(85, 13)
-        Me.pressurep.TabIndex = 3
-        Me.pressurep.Text = "Current Pressure"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(0, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 13)
-        Me.Label1.TabIndex = 7
-        Me.Label1.Text = "Label1"
-        '
-        'outlookp
-        '
-        Me.outlookp.AutoSize = True
-        Me.outlookp.Location = New System.Drawing.Point(472, 25)
-        Me.outlookp.Name = "outlookp"
-        Me.outlookp.Size = New System.Drawing.Size(81, 13)
-        Me.outlookp.TabIndex = 4
-        Me.outlookp.Text = "Current Outlook"
-        '
-        'outlookc
-        '
-        Me.outlookc.HideSelection = False
-        Me.outlookc.Location = New System.Drawing.Point(475, 50)
-        Me.outlookc.Name = "outlookc"
-        Me.outlookc.ReadOnly = True
-        Me.outlookc.Size = New System.Drawing.Size(244, 20)
-        Me.outlookc.TabIndex = 5
-        '
-        'temperaturec
-        '
-        Me.temperaturec.AutoSize = True
-        Me.temperaturec.Location = New System.Drawing.Point(135, 25)
-        Me.temperaturec.Name = "temperaturec"
-        Me.temperaturec.Size = New System.Drawing.Size(13, 13)
-        Me.temperaturec.TabIndex = 6
-        Me.temperaturec.Text = "0"
-        '
-        'humididtyc
-        '
-        Me.humididtyc.AutoSize = True
-        Me.humididtyc.Location = New System.Drawing.Point(135, 57)
-        Me.humididtyc.Name = "humididtyc"
-        Me.humididtyc.Size = New System.Drawing.Size(13, 13)
-        Me.humididtyc.TabIndex = 7
-        Me.humididtyc.Text = "0"
+        Me.windspeedc.AutoSize = True
+        Me.windspeedc.Location = New System.Drawing.Point(381, 57)
+        Me.windspeedc.Name = "windspeedc"
+        Me.windspeedc.Size = New System.Drawing.Size(13, 13)
+        Me.windspeedc.TabIndex = 9
+        Me.windspeedc.Text = "0"
         '
         'pressurec
         '
@@ -551,14 +475,90 @@ Partial Class mainform
         Me.pressurec.TabIndex = 8
         Me.pressurec.Text = "0"
         '
-        'windspeedc
+        'humididtyc
         '
-        Me.windspeedc.AutoSize = True
-        Me.windspeedc.Location = New System.Drawing.Point(381, 57)
-        Me.windspeedc.Name = "windspeedc"
-        Me.windspeedc.Size = New System.Drawing.Size(13, 13)
-        Me.windspeedc.TabIndex = 9
-        Me.windspeedc.Text = "0"
+        Me.humididtyc.AutoSize = True
+        Me.humididtyc.Location = New System.Drawing.Point(135, 57)
+        Me.humididtyc.Name = "humididtyc"
+        Me.humididtyc.Size = New System.Drawing.Size(13, 13)
+        Me.humididtyc.TabIndex = 7
+        Me.humididtyc.Text = "0"
+        '
+        'temperaturec
+        '
+        Me.temperaturec.AutoSize = True
+        Me.temperaturec.Location = New System.Drawing.Point(135, 25)
+        Me.temperaturec.Name = "temperaturec"
+        Me.temperaturec.Size = New System.Drawing.Size(13, 13)
+        Me.temperaturec.TabIndex = 6
+        Me.temperaturec.Text = "0"
+        '
+        'outlookc
+        '
+        Me.outlookc.HideSelection = False
+        Me.outlookc.Location = New System.Drawing.Point(475, 50)
+        Me.outlookc.Name = "outlookc"
+        Me.outlookc.ReadOnly = True
+        Me.outlookc.Size = New System.Drawing.Size(244, 20)
+        Me.outlookc.TabIndex = 5
+        '
+        'outlookp
+        '
+        Me.outlookp.AutoSize = True
+        Me.outlookp.Location = New System.Drawing.Point(472, 25)
+        Me.outlookp.Name = "outlookp"
+        Me.outlookp.Size = New System.Drawing.Size(81, 13)
+        Me.outlookp.TabIndex = 4
+        Me.outlookp.Text = "Current Outlook"
+        '
+        'pressurep
+        '
+        Me.pressurep.AutoSize = True
+        Me.pressurep.Location = New System.Drawing.Point(265, 25)
+        Me.pressurep.Name = "pressurep"
+        Me.pressurep.Size = New System.Drawing.Size(85, 13)
+        Me.pressurep.TabIndex = 3
+        Me.pressurep.Text = "Current Pressure"
+        '
+        'humidityp
+        '
+        Me.humidityp.AutoSize = True
+        Me.humidityp.Location = New System.Drawing.Point(7, 57)
+        Me.humidityp.Name = "humidityp"
+        Me.humidityp.Size = New System.Drawing.Size(84, 13)
+        Me.humidityp.TabIndex = 2
+        Me.humidityp.Text = "Current Humidity"
+        '
+        'Windspeedp
+        '
+        Me.Windspeedp.AutoSize = True
+        Me.Windspeedp.Location = New System.Drawing.Point(265, 57)
+        Me.Windspeedp.Name = "Windspeedp"
+        Me.Windspeedp.Size = New System.Drawing.Size(98, 13)
+        Me.Windspeedp.TabIndex = 1
+        Me.Windspeedp.Text = "Current Windspeed"
+        '
+        'temperaturep
+        '
+        Me.temperaturep.AutoSize = True
+        Me.temperaturep.Location = New System.Drawing.Point(7, 25)
+        Me.temperaturep.Name = "temperaturep"
+        Me.temperaturep.Size = New System.Drawing.Size(104, 13)
+        Me.temperaturep.TabIndex = 0
+        Me.temperaturep.Text = "Current Temperature"
+        '
+        'EventLog1
+        '
+        Me.EventLog1.SynchronizingObject = Me
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(0, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(39, 13)
+        Me.Label1.TabIndex = 7
+        Me.Label1.Text = "Label1"
         '
         'mainform
         '

@@ -38,7 +38,7 @@ Public Class mainform
     End Sub
 
     Private Sub Apply_Click(sender As Object, e As EventArgs) Handles Apply.Click
-
+        mainformfunctions.gettemperature()
     End Sub
 
     Private Sub textchangelog() Handles Log.TextChanged

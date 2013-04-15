@@ -18,7 +18,11 @@ Public Class graph
     End Sub
     Sub readindata()
         connection.Open()
-        Dim pullfromtable As String = ""
+        Dim pullfromtable As String = "SELECT * FROM readings WHERE ID = (SELECT MAX(ID)  FROM readings)"
+        Dim pullread As New OleDbDataAdapter(pullfromtable, connection)
+        pullread.Fill(DataSet1)
+
+
 
     End Sub
 End Class
