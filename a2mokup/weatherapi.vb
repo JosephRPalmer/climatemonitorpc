@@ -4,9 +4,12 @@ Imports System.Text
 Imports System.Net
 Public Class WeatherAPI
     Public xmlstring As String
-    Shared Sub writeapi()
-        Dim newWeather As New WeatherAPI
-        Dim postfirst As String = InputBox("Please enter the first part of your nearest valid postcode", "Weather Location Check", "PR9")
+    Public readable As String
+    
+
+    Sub writeapi()
+        'Dim newWeather As New WeatherAPI
+        Dim postfirst As String = "PR9"
         Dim inStream As StreamReader
         Try
             Dim callreq As WebRequest
@@ -14,22 +17,25 @@ Public Class WeatherAPI
             callreq = WebRequest.Create("http://www.myweather2.com/developer/forecast.ashx?uac=KTRvlm3BTu&output=xml&query=" + postfirst)
             respweb = callreq.GetResponse()
             inStream = New StreamReader(respweb.GetResponseStream())
-            newWeather.xmlstring = inStream.ReadToEnd.ToString()
+            Me.xmlstring = inStream.ReadToEnd.ToString()
         Catch ex As Exception
             mainformfunctions.infoinlog("ERROR: " + ex.ToString)
         End Try
 
-        My.Computer.FileSystem.WriteAllText("C:\Users\Joseph\Test.txt", newWeather.xmlstring, True)
+        My.Computer.FileSystem.WriteAllText("C:\Users\Joseph\Test.txt", Me.xmlstring, True)
+
     End Sub
     Function getvalue(initialtag As String, finaltag As String) As String
         Dim newWeather As New WeatherAPI
+        newWeather.writeapi()
         'should parse xml feed
         Dim temp As String = newWeather.xmlstring
-        If temp <> Nothing Then
-            Do While temp.Substring(0, 7) <> initialtag
-                temp.Remove(0, 1)
+        If temp IsNot Nothing Then
+            Dim x As Integer = initialtag.Length
+            Do While temp.Substring(0, x) <> initialtag
+                temp = temp.Remove(0, 1)
             Loop
-            temp.Remove(0, 7)
+            temp = temp.Remove(0, x)
             Dim i As Integer = 0
             Do While temp.Substring(i, finaltag.Length) <> finaltag
                 i += 1
@@ -37,8 +43,8 @@ Public Class WeatherAPI
             getvalue = temp.Substring(0, i)
             Return getvalue
         Else
-            Return 1
+            Return "N/A"
         End If
-
+        mainformfunctions.infoinlog("Weather Updated")
     End Function
 End Class

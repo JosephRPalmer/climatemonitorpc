@@ -68,7 +68,6 @@ Public Class mainformfunctions
 
         resetatstart()
         logfile("SYSTEM STARTED")
-        WeatherAPI.writeapi()
         mainform.uptimeclocktimer.Enabled = True
         mainform.uptimeclocktimer.Start()
         logfile("Uptime Enabled Successfully")
@@ -100,6 +99,10 @@ Public Class mainformfunctions
         currenttemperature = wea.getvalue("<temp>", "</temp>")
         currenttemperature = currenttemperature + " 'c"
         mainform.temperaturec.Text = currenttemperature
+        mainform.humididtyc.Text = wea.getvalue("<humidity>", "</humidity>")
+        mainform.windspeedc.Text = wea.getvalue("<speed>", "</speed>")
+        mainform.pressurec.Text = wea.getvalue("<pressure>", "</pressure>")
+        mainform.outlookc.Text = wea.getvalue("<weather_text>", "</weather_text>")
         Return 1
     End Function
 End Class

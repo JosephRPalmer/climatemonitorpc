@@ -150,4 +150,9 @@ Public Class mainform
     Private Sub Windspeedp_Click(sender As Object, e As EventArgs) Handles Windspeedp.Click
 
     End Sub
+
+    Private Sub updateweather_Click(sender As Object, e As EventArgs) Handles updateweather.Click
+        mainformfunctions.gettemperature()
+        mainformfunctions.logfile("Weather Updated")
+    End Sub
 End Class

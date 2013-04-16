@@ -74,6 +74,7 @@ Partial Class mainform
         Me.temperaturep = New System.Windows.Forms.Label()
         Me.EventLog1 = New System.Diagnostics.EventLog()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.updateweather = New System.Windows.Forms.Button()
         Me.networksetting.SuspendLayout()
         Me.alertsettings.SuspendLayout()
         Me.systemstatus.SuspendLayout()
@@ -440,6 +441,7 @@ Partial Class mainform
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.updateweather)
         Me.GroupBox1.Controls.Add(Me.windspeedc)
         Me.GroupBox1.Controls.Add(Me.pressurec)
         Me.GroupBox1.Controls.Add(Me.humididtyc)
@@ -460,7 +462,7 @@ Partial Class mainform
         'windspeedc
         '
         Me.windspeedc.AutoSize = True
-        Me.windspeedc.Location = New System.Drawing.Point(381, 57)
+        Me.windspeedc.Location = New System.Drawing.Point(319, 57)
         Me.windspeedc.Name = "windspeedc"
         Me.windspeedc.Size = New System.Drawing.Size(13, 13)
         Me.windspeedc.TabIndex = 9
@@ -469,7 +471,7 @@ Partial Class mainform
         'pressurec
         '
         Me.pressurec.AutoSize = True
-        Me.pressurec.Location = New System.Drawing.Point(381, 25)
+        Me.pressurec.Location = New System.Drawing.Point(319, 25)
         Me.pressurec.Name = "pressurec"
         Me.pressurec.Size = New System.Drawing.Size(13, 13)
         Me.pressurec.TabIndex = 8
@@ -496,7 +498,7 @@ Partial Class mainform
         'outlookc
         '
         Me.outlookc.HideSelection = False
-        Me.outlookc.Location = New System.Drawing.Point(475, 50)
+        Me.outlookc.Location = New System.Drawing.Point(379, 54)
         Me.outlookc.Name = "outlookc"
         Me.outlookc.ReadOnly = True
         Me.outlookc.Size = New System.Drawing.Size(244, 20)
@@ -505,7 +507,7 @@ Partial Class mainform
         'outlookp
         '
         Me.outlookp.AutoSize = True
-        Me.outlookp.Location = New System.Drawing.Point(472, 25)
+        Me.outlookp.Location = New System.Drawing.Point(376, 25)
         Me.outlookp.Name = "outlookp"
         Me.outlookp.Size = New System.Drawing.Size(81, 13)
         Me.outlookp.TabIndex = 4
@@ -514,7 +516,7 @@ Partial Class mainform
         'pressurep
         '
         Me.pressurep.AutoSize = True
-        Me.pressurep.Location = New System.Drawing.Point(265, 25)
+        Me.pressurep.Location = New System.Drawing.Point(184, 25)
         Me.pressurep.Name = "pressurep"
         Me.pressurep.Size = New System.Drawing.Size(85, 13)
         Me.pressurep.TabIndex = 3
@@ -532,7 +534,7 @@ Partial Class mainform
         'Windspeedp
         '
         Me.Windspeedp.AutoSize = True
-        Me.Windspeedp.Location = New System.Drawing.Point(265, 57)
+        Me.Windspeedp.Location = New System.Drawing.Point(184, 57)
         Me.Windspeedp.Name = "Windspeedp"
         Me.Windspeedp.Size = New System.Drawing.Size(98, 13)
         Me.Windspeedp.TabIndex = 1
@@ -559,6 +561,15 @@ Partial Class mainform
         Me.Label1.Size = New System.Drawing.Size(39, 13)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "Label1"
+        '
+        'updateweather
+        '
+        Me.updateweather.Location = New System.Drawing.Point(645, 38)
+        Me.updateweather.Name = "updateweather"
+        Me.updateweather.Size = New System.Drawing.Size(134, 23)
+        Me.updateweather.TabIndex = 10
+        Me.updateweather.Text = "Update"
+        Me.updateweather.UseVisualStyleBackColor = True
         '
         'mainform
         '
@@ -638,5 +649,6 @@ Partial Class mainform
     Friend WithEvents outlookc As System.Windows.Forms.TextBox
     Friend WithEvents outlookp As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents updateweather As System.Windows.Forms.Button
 
 End Class
