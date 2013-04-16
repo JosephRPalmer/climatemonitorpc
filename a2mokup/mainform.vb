@@ -19,7 +19,7 @@ Public Class mainform
     Private Sub connecttomonitor()
         Client = New NetComm.Client()
         Dim ID As String = "1"
-        IP = InputBox("Enter the IP address shown on the climate monitor", "Connecting...")
+        IP = InputBox("Enter the IP address shown on the climate monitor", "Connecting...", "localhost")
         Client.Connect(IP, 8080, ID)
     End Sub
     Private Sub exitb_Click(sender As Object, e As EventArgs) Handles exitb.Click

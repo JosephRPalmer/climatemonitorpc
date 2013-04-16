@@ -19,7 +19,9 @@ Public Class WeatherAPI
             inStream = New StreamReader(respweb.GetResponseStream())
             Me.xmlstring = inStream.ReadToEnd.ToString()
         Catch ex As Exception
-            mainformfunctions.infoinlog("ERROR: " + ex.ToString)
+            rawtcpdump.outputtcp("ERROR: " + ex.ToString)
+            mainformfunctions.logfile("Weather Data Update Failure")
+            'mainformfunctions.infoinlog("Error Detected")
         End Try
 
         My.Computer.FileSystem.WriteAllText("C:\Users\Joseph\Test.txt", Me.xmlstring, True)

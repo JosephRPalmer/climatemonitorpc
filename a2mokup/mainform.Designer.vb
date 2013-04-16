@@ -378,7 +378,7 @@ Partial Class mainform
         Me.rawtcpp.Name = "rawtcpp"
         Me.rawtcpp.Size = New System.Drawing.Size(298, 39)
         Me.rawtcpp.TabIndex = 3
-        Me.rawtcpp.Text = "Raw TCP Dump"
+        Me.rawtcpp.Text = "Raw Log Dump"
         Me.rawtcpp.UseVisualStyleBackColor = True
         '
         'Log

@@ -64,8 +64,6 @@ Public Class mainformfunctions
         Return 1
     End Function
     Public Shared Function programstart()
-        Dim api As New WeatherAPI
-
         resetatstart()
         logfile("SYSTEM STARTED")
         mainform.uptimeclocktimer.Enabled = True
@@ -77,7 +75,6 @@ Public Class mainformfunctions
         logfile("Local IP Address Captured")
         infoinlog("Checking Connection Status")
         gettemperature()
-        
         Return 1
     End Function
     Public Shared Function writetcpdata(data As String)
