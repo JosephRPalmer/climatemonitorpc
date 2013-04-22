@@ -10,9 +10,11 @@ Public Class mainform
     Dim IP As String
     Dim thedate As New Date
     Dim i1, i2, i3 As Integer
+    Public temph, templ As Integer
     Dim strreceived As String
     Dim systemip As String
     Dim getdataworker As BackgroundWorker = New BackgroundWorker
+    Dim emailad As String
 
     Private Sub mainform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mainformfunctions.programstart()
@@ -48,7 +50,8 @@ Public Class mainform
         rawtcpdump.outputtcp("Connection Failure")
     End Sub
     Private Sub Apply_Click(sender As Object, e As EventArgs) Handles Apply.Click
-
+        emailad = emailonec.Text
+        mainformfunctions.infoinlog("Email Saved")
     End Sub
 
     Private Sub textchangelog() Handles Log.TextChanged
@@ -149,6 +152,7 @@ Public Class mainform
     End Sub
     Function getip()
         systemip = InputBox("Please enter the address shown on the Climate Monitor", "Connection Information", "192.168.1.1")
+
         Return 1
     End Function
 
@@ -164,15 +168,18 @@ Public Class mainform
     Private Sub workerwork(ByVal sender As Object, ByVal e As DoWorkEventArgs)
         getdataworker.ReportProgress(5)
         mainformfunctions.infoinlog("DATA RETRIEVAL ATTEMPT IN PROGRESS! THIS APPLICATION MAY HANG FOR UP TO 3 MINUTES DEPENDENT ON SYSTEM")
-        Dim authenticationstring As String = New System.Net.WebClient().DownloadString("http://" + systemip + "/authenticate")
-        'If parsehtml(authenticationstring, "<h1>", "</h1>") Is "connectionsuccessfulrunprogram" Then
-        mainformfunctions.logfile("Connecting ...")
-        'getdataworker.ReportProgress(20)
-        Dim htmltemp As String = New System.Net.WebClient().DownloadString("http://" + systemip + "/gettemp")
-        'getdataworker.ReportProgress(30)
-        Dim htmlhumid As String = New System.Net.WebClient().DownloadString("http://" + systemip + "/gethumid")
-        'getdataworker.ReportProgress(40)
-        Dim htmllight As String = New System.Net.WebClient().DownloadString("http://" + systemip + "/getlight")
+        Try
+            Dim authenticationstring As String = New System.Net.WebClient().DownloadString("http://" + systemip + "/authenticate")
+            'If parsehtml(authenticationstring, "<h1>", "</h1>") Is "connectionsuccessfulrunprogram" Then
+            mainformfunctions.logfile("Connecting ...")
+            'getdataworker.ReportProgress(20)
+            Dim htmltemp As String = New System.Net.WebClient().DownloadString("http://" + systemip + "/gettemp")
+            getdataworker.ReportProgress(30)
+            Dim htmlhumid As String = New System.Net.WebClient().DownloadString("http://" + systemip + "/gethumid")
+            'getdataworker.ReportProgress(40)
+            Dim htmllight As String = New System.Net.WebClient().DownloadString("http://" + systemip + "/getlight")
+        
+
         getdataworker.ReportProgress(60)
         i1 = parsehtml(htmltemp, "<h1>", "</h1>")
         i2 = parsehtml(htmlhumid, "<h1>", "</h1>")
@@ -183,10 +190,13 @@ Public Class mainform
         dtahandling()
         ' Else
         'mainformfunctions.logfile("Failed to connect to Climate Monitor, reconnection attempt in 60 seconds")
-        'End If
+            'End If
+        Catch ex As Exception
+
+        End Try
         getdataworker.ReportProgress(100)
         getdataworker.CancelAsync()
-        
+
 
     End Sub
     Private Sub bw_RunWorkerCompleted(ByVal sender As Object, ByVal e As RunWorkerCompletedEventArgs)
@@ -196,7 +206,53 @@ Public Class mainform
             mainformfunctions.logfile("Error in background processing. Code: E1RBGDF0")
         Else
             wrlbl()
+            checksend()
         End If
+    End Sub
+    Sub checksend()
+        If emailcheck.Checked = True Then
+            If alert.ComboBoxht.SelectedItem <> Nothing Then
+                If alert.ComboBoxht.SelectedItem < i1 Then
+                    email.MailAlert(emailad, "HIGH TEMPERATURE")
+                    Exit Sub
+                ElseIf alert.ComboBoxlt.SelectedItem > i1 Then
+                    email.MailAlert(emailad, "LOW TEMPERATURE")
+                    Exit Sub
+                Else
+                    Exit Sub
+                End If
+            End If
+            If alert.ComboBoxhh.SelectedItem <> Nothing Then
+                If alert.ComboBoxlh.SelectedItem <> Nothing Then
+                    If alert.ComboBoxhh.SelectedItem < i2 Then
+                        email.MailAlert(emailad, "HIGH HUMIDITY")
+                        Exit Sub
+                    ElseIf alert.ComboBoxlh.SelectedItem > i2 Then
+                        email.MailAlert(emailad, "LOW HUMIDITY")
+                        Exit Sub
+                    Else
+                        Exit Sub
+                    End If
+                End If
+            End If
+            If alert.ComboBoxhl.SelectedItem <> Nothing Then
+                If alert.ComboBoxll.SelectedItem <> Nothing Then
+                    If alert.ComboBoxhl.SelectedItem < i2 Then
+                        email.MailAlert(emailad, "HIGH LIGHT LEVELS")
+                        Exit Sub
+                    ElseIf alert.ComboBoxll.SelectedItem > i2 Then
+                        email.MailAlert(emailad, "LOW LIGHT LEVELS")
+                        Exit Sub
+                    Else
+                        Exit Sub
+                    End If
+                End If
+            End If
+        End If
+        
+
+
+
     End Sub
     Sub wrlbl()
         templrc.Text = i1
@@ -229,5 +285,9 @@ Public Class mainform
 
     Private Sub Label3_Click(sender As Object, e As EventArgs) Handles lightlrp.Click
 
+    End Sub
+
+    Private Sub editalertsettings_Click(sender As Object, e As EventArgs) Handles editalertsettings.Click
+        alert.Show()
     End Sub
 End Class

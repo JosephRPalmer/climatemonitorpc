@@ -37,6 +37,7 @@ Partial Class mainform
         Me.remoteipp = New System.Windows.Forms.Label()
         Me.localipp = New System.Windows.Forms.Label()
         Me.alertsettings = New System.Windows.Forms.GroupBox()
+        Me.editalertsettings = New System.Windows.Forms.Button()
         Me.Reset = New System.Windows.Forms.Button()
         Me.Apply = New System.Windows.Forms.Button()
         Me.smsonec = New System.Windows.Forms.TextBox()
@@ -71,14 +72,13 @@ Partial Class mainform
         Me.EventLog1 = New System.Diagnostics.EventLog()
         Me.checkconnectivity = New System.Windows.Forms.Timer(Me.components)
         Me.getdata = New System.Windows.Forms.Timer(Me.components)
-        Me.editalertsettings = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.templrp = New System.Windows.Forms.Label()
-        Me.humlrp = New System.Windows.Forms.Label()
-        Me.lightlrp = New System.Windows.Forms.Label()
-        Me.templrc = New System.Windows.Forms.Label()
-        Me.humlrc = New System.Windows.Forms.Label()
         Me.lightlrc = New System.Windows.Forms.Label()
+        Me.humlrc = New System.Windows.Forms.Label()
+        Me.templrc = New System.Windows.Forms.Label()
+        Me.lightlrp = New System.Windows.Forms.Label()
+        Me.humlrp = New System.Windows.Forms.Label()
+        Me.templrp = New System.Windows.Forms.Label()
         Me.networksetting.SuspendLayout()
         Me.alertsettings.SuspendLayout()
         Me.systemstatus.SuspendLayout()
@@ -231,6 +231,15 @@ Partial Class mainform
         Me.alertsettings.TabStop = False
         Me.alertsettings.Text = "Alert Settings"
         '
+        'editalertsettings
+        '
+        Me.editalertsettings.Location = New System.Drawing.Point(9, 141)
+        Me.editalertsettings.Name = "editalertsettings"
+        Me.editalertsettings.Size = New System.Drawing.Size(211, 36)
+        Me.editalertsettings.TabIndex = 15
+        Me.editalertsettings.Text = "Edit Alert Settings"
+        Me.editalertsettings.UseVisualStyleBackColor = True
+        '
         'Reset
         '
         Me.Reset.Location = New System.Drawing.Point(116, 183)
@@ -242,7 +251,7 @@ Partial Class mainform
         '
         'Apply
         '
-        Me.Apply.Location = New System.Drawing.Point(9, 183)
+        Me.Apply.Location = New System.Drawing.Point(9, 184)
         Me.Apply.Name = "Apply"
         Me.Apply.Size = New System.Drawing.Size(104, 38)
         Me.Apply.TabIndex = 13
@@ -251,6 +260,7 @@ Partial Class mainform
         '
         'smsonec
         '
+        Me.smsonec.Enabled = False
         Me.smsonec.Location = New System.Drawing.Point(147, 107)
         Me.smsonec.Name = "smsonec"
         Me.smsonec.Size = New System.Drawing.Size(74, 20)
@@ -293,6 +303,7 @@ Partial Class mainform
         'smscheck
         '
         Me.smscheck.AutoSize = True
+        Me.smscheck.Enabled = False
         Me.smscheck.Location = New System.Drawing.Point(90, 53)
         Me.smscheck.Name = "smscheck"
         Me.smscheck.Size = New System.Drawing.Size(49, 17)
@@ -529,16 +540,7 @@ Partial Class mainform
         '
         'getdata
         '
-        Me.getdata.Interval = 180000
-        '
-        'editalertsettings
-        '
-        Me.editalertsettings.Location = New System.Drawing.Point(9, 141)
-        Me.editalertsettings.Name = "editalertsettings"
-        Me.editalertsettings.Size = New System.Drawing.Size(211, 36)
-        Me.editalertsettings.TabIndex = 15
-        Me.editalertsettings.Text = "Edit Alert Settings"
-        Me.editalertsettings.UseVisualStyleBackColor = True
+        Me.getdata.Interval = 20000
         '
         'GroupBox2
         '
@@ -555,41 +557,14 @@ Partial Class mainform
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Latest Readings"
         '
-        'templrp
+        'lightlrc
         '
-        Me.templrp.AutoSize = True
-        Me.templrp.Location = New System.Drawing.Point(11, 30)
-        Me.templrp.Name = "templrp"
-        Me.templrp.Size = New System.Drawing.Size(67, 13)
-        Me.templrp.TabIndex = 0
-        Me.templrp.Text = "Temperature"
-        '
-        'humlrp
-        '
-        Me.humlrp.AutoSize = True
-        Me.humlrp.Location = New System.Drawing.Point(11, 62)
-        Me.humlrp.Name = "humlrp"
-        Me.humlrp.Size = New System.Drawing.Size(47, 13)
-        Me.humlrp.TabIndex = 1
-        Me.humlrp.Text = "Humidity"
-        '
-        'lightlrp
-        '
-        Me.lightlrp.AutoSize = True
-        Me.lightlrp.Location = New System.Drawing.Point(11, 94)
-        Me.lightlrp.Name = "lightlrp"
-        Me.lightlrp.Size = New System.Drawing.Size(30, 13)
-        Me.lightlrp.TabIndex = 2
-        Me.lightlrp.Text = "Light"
-        '
-        'templrc
-        '
-        Me.templrc.AutoSize = True
-        Me.templrc.Location = New System.Drawing.Point(138, 30)
-        Me.templrc.Name = "templrc"
-        Me.templrc.Size = New System.Drawing.Size(13, 13)
-        Me.templrc.TabIndex = 3
-        Me.templrc.Text = "0"
+        Me.lightlrc.AutoSize = True
+        Me.lightlrc.Location = New System.Drawing.Point(138, 94)
+        Me.lightlrc.Name = "lightlrc"
+        Me.lightlrc.Size = New System.Drawing.Size(13, 13)
+        Me.lightlrc.TabIndex = 5
+        Me.lightlrc.Text = "0"
         '
         'humlrc
         '
@@ -600,14 +575,41 @@ Partial Class mainform
         Me.humlrc.TabIndex = 4
         Me.humlrc.Text = "0"
         '
-        'lightlrc
+        'templrc
         '
-        Me.lightlrc.AutoSize = True
-        Me.lightlrc.Location = New System.Drawing.Point(138, 94)
-        Me.lightlrc.Name = "lightlrc"
-        Me.lightlrc.Size = New System.Drawing.Size(13, 13)
-        Me.lightlrc.TabIndex = 5
-        Me.lightlrc.Text = "0"
+        Me.templrc.AutoSize = True
+        Me.templrc.Location = New System.Drawing.Point(138, 30)
+        Me.templrc.Name = "templrc"
+        Me.templrc.Size = New System.Drawing.Size(13, 13)
+        Me.templrc.TabIndex = 3
+        Me.templrc.Text = "0"
+        '
+        'lightlrp
+        '
+        Me.lightlrp.AutoSize = True
+        Me.lightlrp.Location = New System.Drawing.Point(11, 94)
+        Me.lightlrp.Name = "lightlrp"
+        Me.lightlrp.Size = New System.Drawing.Size(30, 13)
+        Me.lightlrp.TabIndex = 2
+        Me.lightlrp.Text = "Light"
+        '
+        'humlrp
+        '
+        Me.humlrp.AutoSize = True
+        Me.humlrp.Location = New System.Drawing.Point(11, 62)
+        Me.humlrp.Name = "humlrp"
+        Me.humlrp.Size = New System.Drawing.Size(47, 13)
+        Me.humlrp.TabIndex = 1
+        Me.humlrp.Text = "Humidity"
+        '
+        'templrp
+        '
+        Me.templrp.AutoSize = True
+        Me.templrp.Location = New System.Drawing.Point(11, 30)
+        Me.templrp.Name = "templrp"
+        Me.templrp.Size = New System.Drawing.Size(67, 13)
+        Me.templrp.TabIndex = 0
+        Me.templrp.Text = "Temperature"
         '
         'mainform
         '

@@ -84,6 +84,7 @@ Public Class mainformfunctions
         mainform.getip()
         logfile("Uptime Enabled Successfully")
         displaypossiblemac()
+
         Return 1
     End Function
     Public Shared Function programstartdontjudder()

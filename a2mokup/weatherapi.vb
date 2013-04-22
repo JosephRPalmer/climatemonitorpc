@@ -2,10 +2,11 @@
 Imports System.IO
 Imports System.Text
 Imports System.Net
+Imports System.ComponentModel
+
 Public Class WeatherAPI
     Public xmlstring As String
     Public readable As String
-    
 
     Sub writeapi()
         'Dim newWeather As New WeatherAPI
@@ -23,8 +24,6 @@ Public Class WeatherAPI
             mainformfunctions.logfile("Weather Data Update Failure")
             'mainformfunctions.infoinlog("Error Detected")
         End Try
-
-        My.Computer.FileSystem.WriteAllText("C:\Users\Joseph\Test.txt", Me.xmlstring, True)
 
     End Sub
     Function getvalue(initialtag As String, finaltag As String) As String

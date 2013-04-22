@@ -89,12 +89,19 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="alert.Designer.vb">
+      <DependentUpon>alert.vb</DependentUpon>
+    </Compile>
+    <Compile Include="alert.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="datagrid.Designer.vb">
       <DependentUpon>datagrid.vb</DependentUpon>
     </Compile>
     <Compile Include="datagrid.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="email.vb" />
     <Compile Include="graph.Designer.vb">
       <DependentUpon>graph.vb</DependentUpon>
     </Compile>
@@ -139,6 +146,9 @@
     <Compile Include="weatherapi.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="alert.resx">
+      <DependentUpon>alert.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="datagrid.resx">
       <DependentUpon>datagrid.vb</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +182,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="syntax.txt">
