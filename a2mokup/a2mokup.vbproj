@@ -69,6 +69,7 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -88,6 +89,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="datagrid.Designer.vb">
+      <DependentUpon>datagrid.vb</DependentUpon>
+    </Compile>
+    <Compile Include="datagrid.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="graph.Designer.vb">
       <DependentUpon>graph.vb</DependentUpon>
     </Compile>
@@ -132,6 +139,9 @@
     <Compile Include="weatherapi.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="datagrid.resx">
+      <DependentUpon>datagrid.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="graph.resx">
       <DependentUpon>graph.vb</DependentUpon>
     </EmbeddedResource>

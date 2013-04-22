@@ -39,14 +39,9 @@ Partial Class mainform
         Me.alertsettings = New System.Windows.Forms.GroupBox()
         Me.Reset = New System.Windows.Forms.Button()
         Me.Apply = New System.Windows.Forms.Button()
-        Me.smstwoc = New System.Windows.Forms.TextBox()
-        Me.countrycodetwo = New System.Windows.Forms.Label()
-        Me.smstwop = New System.Windows.Forms.Label()
         Me.smsonec = New System.Windows.Forms.TextBox()
         Me.countrycodeone = New System.Windows.Forms.Label()
         Me.smsonep = New System.Windows.Forms.Label()
-        Me.emailtwoc = New System.Windows.Forms.TextBox()
-        Me.emailtwop = New System.Windows.Forms.Label()
         Me.emailonec = New System.Windows.Forms.TextBox()
         Me.emailonep = New System.Windows.Forms.Label()
         Me.smscheck = New System.Windows.Forms.CheckBox()
@@ -62,6 +57,7 @@ Partial Class mainform
         Me.uptimeclocktimer = New System.Windows.Forms.Timer(Me.components)
         Me.reselectnic = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.updateweather = New System.Windows.Forms.Button()
         Me.windspeedc = New System.Windows.Forms.Label()
         Me.pressurec = New System.Windows.Forms.Label()
         Me.humididtyc = New System.Windows.Forms.Label()
@@ -73,13 +69,22 @@ Partial Class mainform
         Me.Windspeedp = New System.Windows.Forms.Label()
         Me.temperaturep = New System.Windows.Forms.Label()
         Me.EventLog1 = New System.Diagnostics.EventLog()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.updateweather = New System.Windows.Forms.Button()
+        Me.checkconnectivity = New System.Windows.Forms.Timer(Me.components)
+        Me.getdata = New System.Windows.Forms.Timer(Me.components)
+        Me.editalertsettings = New System.Windows.Forms.Button()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.templrp = New System.Windows.Forms.Label()
+        Me.humlrp = New System.Windows.Forms.Label()
+        Me.lightlrp = New System.Windows.Forms.Label()
+        Me.templrc = New System.Windows.Forms.Label()
+        Me.humlrc = New System.Windows.Forms.Label()
+        Me.lightlrc = New System.Windows.Forms.Label()
         Me.networksetting.SuspendLayout()
         Me.alertsettings.SuspendLayout()
         Me.systemstatus.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.EventLog1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'networksetting
@@ -208,16 +213,12 @@ Partial Class mainform
         '
         'alertsettings
         '
+        Me.alertsettings.Controls.Add(Me.editalertsettings)
         Me.alertsettings.Controls.Add(Me.Reset)
         Me.alertsettings.Controls.Add(Me.Apply)
-        Me.alertsettings.Controls.Add(Me.smstwoc)
-        Me.alertsettings.Controls.Add(Me.countrycodetwo)
-        Me.alertsettings.Controls.Add(Me.smstwop)
         Me.alertsettings.Controls.Add(Me.smsonec)
         Me.alertsettings.Controls.Add(Me.countrycodeone)
         Me.alertsettings.Controls.Add(Me.smsonep)
-        Me.alertsettings.Controls.Add(Me.emailtwoc)
-        Me.alertsettings.Controls.Add(Me.emailtwop)
         Me.alertsettings.Controls.Add(Me.emailonec)
         Me.alertsettings.Controls.Add(Me.emailonep)
         Me.alertsettings.Controls.Add(Me.smscheck)
@@ -225,57 +226,32 @@ Partial Class mainform
         Me.alertsettings.Controls.Add(Me.alertstatusp)
         Me.alertsettings.Location = New System.Drawing.Point(257, 29)
         Me.alertsettings.Name = "alertsettings"
-        Me.alertsettings.Size = New System.Drawing.Size(227, 381)
+        Me.alertsettings.Size = New System.Drawing.Size(227, 231)
         Me.alertsettings.TabIndex = 1
         Me.alertsettings.TabStop = False
         Me.alertsettings.Text = "Alert Settings"
         '
         'Reset
         '
-        Me.Reset.Location = New System.Drawing.Point(9, 330)
+        Me.Reset.Location = New System.Drawing.Point(116, 183)
         Me.Reset.Name = "Reset"
-        Me.Reset.Size = New System.Drawing.Size(211, 39)
+        Me.Reset.Size = New System.Drawing.Size(104, 39)
         Me.Reset.TabIndex = 14
         Me.Reset.Text = "Reset"
         Me.Reset.UseVisualStyleBackColor = True
         '
         'Apply
         '
-        Me.Apply.Location = New System.Drawing.Point(9, 280)
+        Me.Apply.Location = New System.Drawing.Point(9, 183)
         Me.Apply.Name = "Apply"
-        Me.Apply.Size = New System.Drawing.Size(212, 38)
+        Me.Apply.Size = New System.Drawing.Size(104, 38)
         Me.Apply.TabIndex = 13
         Me.Apply.Text = "Apply"
         Me.Apply.UseVisualStyleBackColor = True
         '
-        'smstwoc
-        '
-        Me.smstwoc.Location = New System.Drawing.Point(148, 221)
-        Me.smstwoc.Name = "smstwoc"
-        Me.smstwoc.Size = New System.Drawing.Size(73, 20)
-        Me.smstwoc.TabIndex = 12
-        '
-        'countrycodetwo
-        '
-        Me.countrycodetwo.AutoSize = True
-        Me.countrycodetwo.Location = New System.Drawing.Point(116, 224)
-        Me.countrycodetwo.Name = "countrycodetwo"
-        Me.countrycodetwo.Size = New System.Drawing.Size(25, 13)
-        Me.countrycodetwo.TabIndex = 11
-        Me.countrycodetwo.Text = "+44"
-        '
-        'smstwop
-        '
-        Me.smstwop.AutoSize = True
-        Me.smstwop.Location = New System.Drawing.Point(6, 224)
-        Me.smstwop.Name = "smstwop"
-        Me.smstwop.Size = New System.Drawing.Size(91, 13)
-        Me.smstwop.TabIndex = 10
-        Me.smstwop.Text = "2nd SMS Number"
-        '
         'smsonec
         '
-        Me.smsonec.Location = New System.Drawing.Point(147, 192)
+        Me.smsonec.Location = New System.Drawing.Point(147, 107)
         Me.smsonec.Name = "smsonec"
         Me.smsonec.Size = New System.Drawing.Size(74, 20)
         Me.smsonec.TabIndex = 9
@@ -283,7 +259,7 @@ Partial Class mainform
         'countrycodeone
         '
         Me.countrycodeone.AutoSize = True
-        Me.countrycodeone.Location = New System.Drawing.Point(116, 196)
+        Me.countrycodeone.Location = New System.Drawing.Point(108, 110)
         Me.countrycodeone.Name = "countrycodeone"
         Me.countrycodeone.Size = New System.Drawing.Size(25, 13)
         Me.countrycodeone.TabIndex = 8
@@ -292,31 +268,15 @@ Partial Class mainform
         'smsonep
         '
         Me.smsonep.AutoSize = True
-        Me.smsonep.Location = New System.Drawing.Point(6, 195)
+        Me.smsonep.Location = New System.Drawing.Point(6, 110)
         Me.smsonep.Name = "smsonep"
         Me.smsonep.Size = New System.Drawing.Size(70, 13)
         Me.smsonep.TabIndex = 7
         Me.smsonep.Text = "SMS Number"
         '
-        'emailtwoc
-        '
-        Me.emailtwoc.Location = New System.Drawing.Point(111, 145)
-        Me.emailtwoc.Name = "emailtwoc"
-        Me.emailtwoc.Size = New System.Drawing.Size(110, 20)
-        Me.emailtwoc.TabIndex = 6
-        '
-        'emailtwop
-        '
-        Me.emailtwop.AutoSize = True
-        Me.emailtwop.Location = New System.Drawing.Point(6, 148)
-        Me.emailtwop.Name = "emailtwop"
-        Me.emailtwop.Size = New System.Drawing.Size(94, 13)
-        Me.emailtwop.TabIndex = 5
-        Me.emailtwop.Text = "2nd Email Address"
-        '
         'emailonec
         '
-        Me.emailonec.Location = New System.Drawing.Point(111, 116)
+        Me.emailonec.Location = New System.Drawing.Point(111, 76)
         Me.emailonec.Name = "emailonec"
         Me.emailonec.Size = New System.Drawing.Size(110, 20)
         Me.emailonec.TabIndex = 4
@@ -324,7 +284,7 @@ Partial Class mainform
         'emailonep
         '
         Me.emailonep.AutoSize = True
-        Me.emailonep.Location = New System.Drawing.Point(6, 119)
+        Me.emailonep.Location = New System.Drawing.Point(6, 83)
         Me.emailonep.Name = "emailonep"
         Me.emailonep.Size = New System.Drawing.Size(73, 13)
         Me.emailonep.TabIndex = 3
@@ -333,7 +293,7 @@ Partial Class mainform
         'smscheck
         '
         Me.smscheck.AutoSize = True
-        Me.smscheck.Location = New System.Drawing.Point(9, 76)
+        Me.smscheck.Location = New System.Drawing.Point(90, 53)
         Me.smscheck.Name = "smscheck"
         Me.smscheck.Size = New System.Drawing.Size(49, 17)
         Me.smscheck.TabIndex = 2
@@ -378,13 +338,14 @@ Partial Class mainform
         Me.rawtcpp.Name = "rawtcpp"
         Me.rawtcpp.Size = New System.Drawing.Size(298, 39)
         Me.rawtcpp.TabIndex = 3
-        Me.rawtcpp.Text = "Raw Log Dump"
+        Me.rawtcpp.Text = "Technical Information"
         Me.rawtcpp.UseVisualStyleBackColor = True
         '
         'Log
         '
         Me.Log.Location = New System.Drawing.Point(16, 63)
         Me.Log.Name = "Log"
+        Me.Log.ReadOnly = True
         Me.Log.Size = New System.Drawing.Size(298, 249)
         Me.Log.TabIndex = 2
         Me.Log.Text = ""
@@ -409,18 +370,18 @@ Partial Class mainform
         '
         'Graphs
         '
-        Me.Graphs.Location = New System.Drawing.Point(49, 253)
+        Me.Graphs.Location = New System.Drawing.Point(25, 253)
         Me.Graphs.Name = "Graphs"
-        Me.Graphs.Size = New System.Drawing.Size(178, 37)
+        Me.Graphs.Size = New System.Drawing.Size(226, 37)
         Me.Graphs.TabIndex = 3
         Me.Graphs.Text = "To Graphs"
         Me.Graphs.UseVisualStyleBackColor = True
         '
         'exitb
         '
-        Me.exitb.Location = New System.Drawing.Point(49, 360)
+        Me.exitb.Location = New System.Drawing.Point(25, 341)
         Me.exitb.Name = "exitb"
-        Me.exitb.Size = New System.Drawing.Size(178, 38)
+        Me.exitb.Size = New System.Drawing.Size(226, 38)
         Me.exitb.TabIndex = 4
         Me.exitb.Text = "Exit"
         Me.exitb.UseVisualStyleBackColor = True
@@ -432,9 +393,9 @@ Partial Class mainform
         '
         'reselectnic
         '
-        Me.reselectnic.Location = New System.Drawing.Point(49, 308)
+        Me.reselectnic.Location = New System.Drawing.Point(25, 296)
         Me.reselectnic.Name = "reselectnic"
-        Me.reselectnic.Size = New System.Drawing.Size(178, 39)
+        Me.reselectnic.Size = New System.Drawing.Size(226, 39)
         Me.reselectnic.TabIndex = 5
         Me.reselectnic.Text = "Select Network Interface"
         Me.reselectnic.UseVisualStyleBackColor = True
@@ -458,6 +419,15 @@ Partial Class mainform
         Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Current Weather"
+        '
+        'updateweather
+        '
+        Me.updateweather.Location = New System.Drawing.Point(645, 38)
+        Me.updateweather.Name = "updateweather"
+        Me.updateweather.Size = New System.Drawing.Size(134, 23)
+        Me.updateweather.TabIndex = 10
+        Me.updateweather.Text = "Update"
+        Me.updateweather.UseVisualStyleBackColor = True
         '
         'windspeedc
         '
@@ -553,30 +523,98 @@ Partial Class mainform
         '
         Me.EventLog1.SynchronizingObject = Me
         '
-        'Label1
+        'checkconnectivity
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(0, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 13)
-        Me.Label1.TabIndex = 7
-        Me.Label1.Text = "Label1"
+        Me.checkconnectivity.Interval = 240000
         '
-        'updateweather
+        'getdata
         '
-        Me.updateweather.Location = New System.Drawing.Point(645, 38)
-        Me.updateweather.Name = "updateweather"
-        Me.updateweather.Size = New System.Drawing.Size(134, 23)
-        Me.updateweather.TabIndex = 10
-        Me.updateweather.Text = "Update"
-        Me.updateweather.UseVisualStyleBackColor = True
+        Me.getdata.Interval = 180000
+        '
+        'editalertsettings
+        '
+        Me.editalertsettings.Location = New System.Drawing.Point(9, 141)
+        Me.editalertsettings.Name = "editalertsettings"
+        Me.editalertsettings.Size = New System.Drawing.Size(211, 36)
+        Me.editalertsettings.TabIndex = 15
+        Me.editalertsettings.Text = "Edit Alert Settings"
+        Me.editalertsettings.UseVisualStyleBackColor = True
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.lightlrc)
+        Me.GroupBox2.Controls.Add(Me.humlrc)
+        Me.GroupBox2.Controls.Add(Me.templrc)
+        Me.GroupBox2.Controls.Add(Me.lightlrp)
+        Me.GroupBox2.Controls.Add(Me.humlrp)
+        Me.GroupBox2.Controls.Add(Me.templrp)
+        Me.GroupBox2.Location = New System.Drawing.Point(257, 266)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(227, 144)
+        Me.GroupBox2.TabIndex = 7
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Latest Readings"
+        '
+        'templrp
+        '
+        Me.templrp.AutoSize = True
+        Me.templrp.Location = New System.Drawing.Point(11, 30)
+        Me.templrp.Name = "templrp"
+        Me.templrp.Size = New System.Drawing.Size(67, 13)
+        Me.templrp.TabIndex = 0
+        Me.templrp.Text = "Temperature"
+        '
+        'humlrp
+        '
+        Me.humlrp.AutoSize = True
+        Me.humlrp.Location = New System.Drawing.Point(11, 62)
+        Me.humlrp.Name = "humlrp"
+        Me.humlrp.Size = New System.Drawing.Size(47, 13)
+        Me.humlrp.TabIndex = 1
+        Me.humlrp.Text = "Humidity"
+        '
+        'lightlrp
+        '
+        Me.lightlrp.AutoSize = True
+        Me.lightlrp.Location = New System.Drawing.Point(11, 94)
+        Me.lightlrp.Name = "lightlrp"
+        Me.lightlrp.Size = New System.Drawing.Size(30, 13)
+        Me.lightlrp.TabIndex = 2
+        Me.lightlrp.Text = "Light"
+        '
+        'templrc
+        '
+        Me.templrc.AutoSize = True
+        Me.templrc.Location = New System.Drawing.Point(138, 30)
+        Me.templrc.Name = "templrc"
+        Me.templrc.Size = New System.Drawing.Size(13, 13)
+        Me.templrc.TabIndex = 3
+        Me.templrc.Text = "0"
+        '
+        'humlrc
+        '
+        Me.humlrc.AutoSize = True
+        Me.humlrc.Location = New System.Drawing.Point(138, 62)
+        Me.humlrc.Name = "humlrc"
+        Me.humlrc.Size = New System.Drawing.Size(13, 13)
+        Me.humlrc.TabIndex = 4
+        Me.humlrc.Text = "0"
+        '
+        'lightlrc
+        '
+        Me.lightlrc.AutoSize = True
+        Me.lightlrc.Location = New System.Drawing.Point(138, 94)
+        Me.lightlrc.Name = "lightlrc"
+        Me.lightlrc.Size = New System.Drawing.Size(13, 13)
+        Me.lightlrc.TabIndex = 5
+        Me.lightlrc.Text = "0"
         '
         'mainform
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(820, 520)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.reselectnic)
         Me.Controls.Add(Me.exitb)
@@ -594,8 +632,9 @@ Partial Class mainform
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.EventLog1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents networksetting As System.Windows.Forms.GroupBox
@@ -611,14 +650,9 @@ Partial Class mainform
     Friend WithEvents exitb As System.Windows.Forms.Button
     Friend WithEvents Reset As System.Windows.Forms.Button
     Friend WithEvents Apply As System.Windows.Forms.Button
-    Friend WithEvents smstwoc As System.Windows.Forms.TextBox
-    Friend WithEvents countrycodetwo As System.Windows.Forms.Label
-    Friend WithEvents smstwop As System.Windows.Forms.Label
     Friend WithEvents smsonec As System.Windows.Forms.TextBox
     Friend WithEvents countrycodeone As System.Windows.Forms.Label
     Friend WithEvents smsonep As System.Windows.Forms.Label
-    Friend WithEvents emailtwoc As System.Windows.Forms.TextBox
-    Friend WithEvents emailtwop As System.Windows.Forms.Label
     Friend WithEvents emailonec As System.Windows.Forms.TextBox
     Friend WithEvents emailonep As System.Windows.Forms.Label
     Friend WithEvents smscheck As System.Windows.Forms.CheckBox
@@ -648,7 +682,16 @@ Partial Class mainform
     Friend WithEvents temperaturec As System.Windows.Forms.Label
     Friend WithEvents outlookc As System.Windows.Forms.TextBox
     Friend WithEvents outlookp As System.Windows.Forms.Label
-    Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents updateweather As System.Windows.Forms.Button
+    Friend WithEvents checkconnectivity As System.Windows.Forms.Timer
+    Friend WithEvents getdata As System.Windows.Forms.Timer
+    Friend WithEvents editalertsettings As System.Windows.Forms.Button
+    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents lightlrp As System.Windows.Forms.Label
+    Friend WithEvents humlrp As System.Windows.Forms.Label
+    Friend WithEvents templrp As System.Windows.Forms.Label
+    Friend WithEvents lightlrc As System.Windows.Forms.Label
+    Friend WithEvents humlrc As System.Windows.Forms.Label
+    Friend WithEvents templrc As System.Windows.Forms.Label
 
 End Class

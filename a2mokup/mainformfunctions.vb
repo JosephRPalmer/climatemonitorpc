@@ -1,5 +1,14 @@
 ﻿Imports System.Net
+Imports System.ComponentModel
+
 Public Class mainformfunctions
+    Dim getwe As BackgroundWorker = New BackgroundWorker
+    Sub bgw()
+        getwe.WorkerReportsProgress = True
+        getwe.WorkerSupportsCancellation = True
+        
+
+    End Sub
     Public Shared Function logfile(write As String)
         Dim time As DateTime = DateTime.Now
         Dim format As String = "[ddd d MMM yyyy HH:mm:ss]: "
@@ -49,6 +58,8 @@ Public Class mainformfunctions
         deleteto = deleteto + 2
         final = mactowrite.Remove(0, deleteto)
         mainform.macc.Text = final
+        programstartdontjudder()
+
         Return 1
     End Function
     Public Shared Function connectionstatus(status As String)
@@ -68,8 +79,14 @@ Public Class mainformfunctions
         logfile("SYSTEM STARTED")
         mainform.uptimeclocktimer.Enabled = True
         mainform.uptimeclocktimer.Start()
+        mainform.checkconnectivity.Enabled = True
+        mainform.checkconnectivity.Start()
+        mainform.getip()
         logfile("Uptime Enabled Successfully")
         displaypossiblemac()
+        Return 1
+    End Function
+    Public Shared Function programstartdontjudder()
         connectionstatus("Pending")
         getlocalip()
         logfile("Local IP Address Captured")
@@ -93,13 +110,20 @@ Public Class mainformfunctions
     Public Shared Function gettemperature()
         Dim wea As New WeatherAPI
         Dim currenttemperature As String = ""
-        currenttemperature = wea.getvalue("<temp>", "</temp>")
-        currenttemperature = currenttemperature + " 'c"
-        mainform.temperaturec.Text = currenttemperature
-        mainform.humididtyc.Text = wea.getvalue("<humidity>", "</humidity>")
-        mainform.windspeedc.Text = wea.getvalue("<speed>", "</speed>")
-        mainform.pressurec.Text = wea.getvalue("<pressure>", "</pressure>")
-        mainform.outlookc.Text = wea.getvalue("<weather_text>", "</weather_text>")
-        Return 1
+        If mainform.IsConnected = True Then
+            currenttemperature = wea.getvalue("<temp>", "</temp>")
+            currenttemperature = currenttemperature + " 'c"
+            mainform.temperaturec.Text = currenttemperature
+            mainform.humididtyc.Text = wea.getvalue("<humidity>", "</humidity>")
+            mainform.windspeedc.Text = wea.getvalue("<speed>", "</speed>")
+            mainform.pressurec.Text = wea.getvalue("<pressure>", "</pressure>")
+            mainform.outlookc.Text = wea.getvalue("<weather_text>", "</weather_text>")
+            Return 1
+        Else
+
+            Return 1
+        End If
+
     End Function
+    
 End Class

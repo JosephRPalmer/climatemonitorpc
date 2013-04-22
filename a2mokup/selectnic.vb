@@ -4,9 +4,10 @@
         If possiblenic.SelectedItem Is Nothing Then
             MsgBox("You have not selected a network interface!", MsgBoxStyle.Information, "Information")
         Else
+            Me.Hide()
             mac = possiblenic.Text
             mainformfunctions.writemac()
-            Me.Hide()
+
             mainformfunctions.logfile("MAC Address Captured")
         End If
     End Sub
