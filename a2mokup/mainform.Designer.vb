@@ -540,7 +540,7 @@ Partial Class mainform
         '
         'getdata
         '
-        Me.getdata.Interval = 20000
+        Me.getdata.Interval = 180000
         '
         'GroupBox2
         '
