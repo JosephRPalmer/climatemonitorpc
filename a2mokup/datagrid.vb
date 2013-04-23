@@ -1,3 +1,3 @@
-﻿Public Class datagrid
+﻿Public Class rawdataview
 
 End Class

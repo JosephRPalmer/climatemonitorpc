@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class datagrid
+Partial Class rawdataview
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -34,13 +34,13 @@ Partial Class datagrid
         Me.DataGridView1.Size = New System.Drawing.Size(656, 333)
         Me.DataGridView1.TabIndex = 0
         '
-        'datagrid
+        'rawdataview
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(680, 357)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Name = "datagrid"
+        Me.Name = "rawdataview"
         Me.Text = "Raw Data"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
