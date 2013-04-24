@@ -130,8 +130,8 @@ Public Class mainform
         mainformfunctions.clearcombonic()
         mainformfunctions.displaypossiblemac()
     End Sub
-    Private Sub rawtcpp_Click(sender As Object, e As EventArgs) Handles rawtcpp.Click
-        rawtcpdump.Show()
+    Private Sub rawtcpp_Click(sender As Object, e As EventArgs)
+        'rawtcpdump.Show()
     End Sub
 
     Private Sub Windspeedp_Click(sender As Object, e As EventArgs) Handles Windspeedp.Click
@@ -140,7 +140,7 @@ Public Class mainform
 
     Private Sub updateweather_Click(sender As Object, e As EventArgs) Handles updateweather.Click
         mainformfunctions.gettemperature()
-        mainformfunctions.logfile("Weather Updated")
+
     End Sub
 
     Private Sub checkconnectivity_Tick(sender As Object, e As EventArgs) Handles checkconnectivity.Tick
@@ -176,7 +176,7 @@ Public Class mainform
             Dim htmltemp As String = New System.Net.WebClient().DownloadString("http://" + systemip + "/gettemp")
             getdataworker.ReportProgress(30)
             Dim htmlhumid As String = New System.Net.WebClient().DownloadString("http://" + systemip + "/gethumid")
-            'getdataworker.ReportProgress(40)
+            getdataworker.ReportProgress(40)
             Dim htmllight As String = New System.Net.WebClient().DownloadString("http://" + systemip + "/getlight")
         
 
@@ -186,7 +186,8 @@ Public Class mainform
         i3 = parsehtml(htmllight, "<h1>", "</h1>")
         getdataworker.ReportProgress(87)
         thedate = Date.Now
-        mainformfunctions.logfile("Connection Terminated")
+            mainformfunctions.logfile("Connection Terminated")
+            getdataworker.ReportProgress(92)
         dtahandling()
         ' Else
         'mainformfunctions.logfile("Failed to connect to Climate Monitor, reconnection attempt in 60 seconds")
@@ -290,4 +291,16 @@ Public Class mainform
     Private Sub editalertsettings_Click(sender As Object, e As EventArgs) Handles editalertsettings.Click
         alert.Show()
     End Sub
+
+    Private Sub backupdb_Click(sender As Object, e As EventArgs) Handles backupdb.Click
+        Try
+            My.Computer.FileSystem.CopyFile("Resources\a2project.accdb", InputBox("Enter the location where you wish to backup the system", "System Backup", My.Computer.FileSystem.SpecialDirectories.MyDocuments) + "\a2project.accdb")
+        Catch ex As UnauthorizedAccessException
+            mainformfunctions.infoinlog("Backup Failed: Unauthorised I/O Operation")
+            Exit Sub
+        End Try
+
+    End Sub
+
+
 End Class

@@ -49,7 +49,6 @@ Partial Class mainform
         Me.emailcheck = New System.Windows.Forms.CheckBox()
         Me.alertstatusp = New System.Windows.Forms.Label()
         Me.systemstatus = New System.Windows.Forms.GroupBox()
-        Me.rawtcpp = New System.Windows.Forms.Button()
         Me.Log = New System.Windows.Forms.RichTextBox()
         Me.statusc = New System.Windows.Forms.Label()
         Me.statusp = New System.Windows.Forms.Label()
@@ -79,6 +78,8 @@ Partial Class mainform
         Me.lightlrp = New System.Windows.Forms.Label()
         Me.humlrp = New System.Windows.Forms.Label()
         Me.templrp = New System.Windows.Forms.Label()
+        Me.backupdb = New System.Windows.Forms.Button()
+        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.networksetting.SuspendLayout()
         Me.alertsettings.SuspendLayout()
         Me.systemstatus.SuspendLayout()
@@ -101,9 +102,9 @@ Partial Class mainform
         Me.networksetting.Controls.Add(Me.localmacp)
         Me.networksetting.Controls.Add(Me.remoteipp)
         Me.networksetting.Controls.Add(Me.localipp)
-        Me.networksetting.Location = New System.Drawing.Point(25, 29)
+        Me.networksetting.Location = New System.Drawing.Point(24, 127)
         Me.networksetting.Name = "networksetting"
-        Me.networksetting.Size = New System.Drawing.Size(226, 209)
+        Me.networksetting.Size = New System.Drawing.Size(226, 220)
         Me.networksetting.TabIndex = 0
         Me.networksetting.TabStop = False
         Me.networksetting.Text = "Network Settings"
@@ -224,7 +225,7 @@ Partial Class mainform
         Me.alertsettings.Controls.Add(Me.smscheck)
         Me.alertsettings.Controls.Add(Me.emailcheck)
         Me.alertsettings.Controls.Add(Me.alertstatusp)
-        Me.alertsettings.Location = New System.Drawing.Point(257, 29)
+        Me.alertsettings.Location = New System.Drawing.Point(257, 277)
         Me.alertsettings.Name = "alertsettings"
         Me.alertsettings.Size = New System.Drawing.Size(227, 231)
         Me.alertsettings.TabIndex = 1
@@ -233,16 +234,16 @@ Partial Class mainform
         '
         'editalertsettings
         '
-        Me.editalertsettings.Location = New System.Drawing.Point(9, 141)
+        Me.editalertsettings.Location = New System.Drawing.Point(9, 138)
         Me.editalertsettings.Name = "editalertsettings"
-        Me.editalertsettings.Size = New System.Drawing.Size(211, 36)
+        Me.editalertsettings.Size = New System.Drawing.Size(211, 39)
         Me.editalertsettings.TabIndex = 15
         Me.editalertsettings.Text = "Edit Alert Settings"
         Me.editalertsettings.UseVisualStyleBackColor = True
         '
         'Reset
         '
-        Me.Reset.Location = New System.Drawing.Point(116, 183)
+        Me.Reset.Location = New System.Drawing.Point(116, 187)
         Me.Reset.Name = "Reset"
         Me.Reset.Size = New System.Drawing.Size(104, 39)
         Me.Reset.TabIndex = 14
@@ -251,7 +252,7 @@ Partial Class mainform
         '
         'Apply
         '
-        Me.Apply.Location = New System.Drawing.Point(9, 184)
+        Me.Apply.Location = New System.Drawing.Point(9, 187)
         Me.Apply.Name = "Apply"
         Me.Apply.Size = New System.Drawing.Size(104, 38)
         Me.Apply.TabIndex = 13
@@ -332,32 +333,22 @@ Partial Class mainform
         '
         'systemstatus
         '
-        Me.systemstatus.Controls.Add(Me.rawtcpp)
         Me.systemstatus.Controls.Add(Me.Log)
         Me.systemstatus.Controls.Add(Me.statusc)
         Me.systemstatus.Controls.Add(Me.statusp)
-        Me.systemstatus.Location = New System.Drawing.Point(490, 29)
+        Me.systemstatus.Location = New System.Drawing.Point(488, 127)
         Me.systemstatus.Name = "systemstatus"
         Me.systemstatus.Size = New System.Drawing.Size(320, 381)
         Me.systemstatus.TabIndex = 2
         Me.systemstatus.TabStop = False
         Me.systemstatus.Text = "System Status"
         '
-        'rawtcpp
-        '
-        Me.rawtcpp.Location = New System.Drawing.Point(16, 331)
-        Me.rawtcpp.Name = "rawtcpp"
-        Me.rawtcpp.Size = New System.Drawing.Size(298, 39)
-        Me.rawtcpp.TabIndex = 3
-        Me.rawtcpp.Text = "Technical Information"
-        Me.rawtcpp.UseVisualStyleBackColor = True
-        '
         'Log
         '
-        Me.Log.Location = New System.Drawing.Point(16, 63)
+        Me.Log.Location = New System.Drawing.Point(16, 53)
         Me.Log.Name = "Log"
         Me.Log.ReadOnly = True
-        Me.Log.Size = New System.Drawing.Size(298, 249)
+        Me.Log.Size = New System.Drawing.Size(298, 322)
         Me.Log.TabIndex = 2
         Me.Log.Text = ""
         '
@@ -381,7 +372,7 @@ Partial Class mainform
         '
         'Graphs
         '
-        Me.Graphs.Location = New System.Drawing.Point(25, 253)
+        Me.Graphs.Location = New System.Drawing.Point(25, 372)
         Me.Graphs.Name = "Graphs"
         Me.Graphs.Size = New System.Drawing.Size(226, 37)
         Me.Graphs.TabIndex = 3
@@ -390,7 +381,7 @@ Partial Class mainform
         '
         'exitb
         '
-        Me.exitb.Location = New System.Drawing.Point(25, 341)
+        Me.exitb.Location = New System.Drawing.Point(24, 464)
         Me.exitb.Name = "exitb"
         Me.exitb.Size = New System.Drawing.Size(226, 38)
         Me.exitb.TabIndex = 4
@@ -404,9 +395,9 @@ Partial Class mainform
         '
         'reselectnic
         '
-        Me.reselectnic.Location = New System.Drawing.Point(25, 296)
+        Me.reselectnic.Location = New System.Drawing.Point(24, 415)
         Me.reselectnic.Name = "reselectnic"
-        Me.reselectnic.Size = New System.Drawing.Size(226, 39)
+        Me.reselectnic.Size = New System.Drawing.Size(111, 39)
         Me.reselectnic.TabIndex = 5
         Me.reselectnic.Text = "Select Network Interface"
         Me.reselectnic.UseVisualStyleBackColor = True
@@ -424,9 +415,9 @@ Partial Class mainform
         Me.GroupBox1.Controls.Add(Me.humidityp)
         Me.GroupBox1.Controls.Add(Me.Windspeedp)
         Me.GroupBox1.Controls.Add(Me.temperaturep)
-        Me.GroupBox1.Location = New System.Drawing.Point(25, 416)
+        Me.GroupBox1.Location = New System.Drawing.Point(24, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(785, 94)
+        Me.GroupBox1.Size = New System.Drawing.Size(784, 94)
         Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Current Weather"
@@ -550,7 +541,7 @@ Partial Class mainform
         Me.GroupBox2.Controls.Add(Me.lightlrp)
         Me.GroupBox2.Controls.Add(Me.humlrp)
         Me.GroupBox2.Controls.Add(Me.templrp)
-        Me.GroupBox2.Location = New System.Drawing.Point(257, 266)
+        Me.GroupBox2.Location = New System.Drawing.Point(257, 127)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(227, 144)
         Me.GroupBox2.TabIndex = 7
@@ -611,11 +602,21 @@ Partial Class mainform
         Me.templrp.TabIndex = 0
         Me.templrp.Text = "Temperature"
         '
+        'backupdb
+        '
+        Me.backupdb.Location = New System.Drawing.Point(143, 415)
+        Me.backupdb.Name = "backupdb"
+        Me.backupdb.Size = New System.Drawing.Size(108, 39)
+        Me.backupdb.TabIndex = 8
+        Me.backupdb.Text = "Backup"
+        Me.backupdb.UseVisualStyleBackColor = True
+        '
         'mainform
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(820, 520)
+        Me.Controls.Add(Me.backupdb)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.reselectnic)
@@ -671,7 +672,6 @@ Partial Class mainform
     Friend WithEvents macc As System.Windows.Forms.TextBox
     Friend WithEvents remoteipc As System.Windows.Forms.TextBox
     Friend WithEvents localipc As System.Windows.Forms.TextBox
-    Friend WithEvents rawtcpp As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Windspeedp As System.Windows.Forms.Label
     Friend WithEvents temperaturep As System.Windows.Forms.Label
@@ -695,5 +695,7 @@ Partial Class mainform
     Friend WithEvents lightlrc As System.Windows.Forms.Label
     Friend WithEvents humlrc As System.Windows.Forms.Label
     Friend WithEvents templrc As System.Windows.Forms.Label
+    Friend WithEvents backupdb As System.Windows.Forms.Button
+    Friend WithEvents SaveFileDialog1 As System.Windows.Forms.SaveFileDialog
 
 End Class

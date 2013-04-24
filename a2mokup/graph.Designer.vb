@@ -25,7 +25,6 @@ Partial Class graph
         Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Me.closegraph = New System.Windows.Forms.Button()
         Me.graphingbox = New System.Windows.Forms.PictureBox()
         Me.DataSet1 = New System.Data.DataSet()
         Me.graphtowriteto = New System.Windows.Forms.DataVisualization.Charting.Chart()
@@ -35,15 +34,6 @@ Partial Class graph
         CType(Me.DataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.graphtowriteto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'closegraph
-        '
-        Me.closegraph.Location = New System.Drawing.Point(507, 394)
-        Me.closegraph.Name = "closegraph"
-        Me.closegraph.Size = New System.Drawing.Size(106, 23)
-        Me.closegraph.TabIndex = 0
-        Me.closegraph.Text = "Close Graphs"
-        Me.closegraph.UseVisualStyleBackColor = True
         '
         'graphingbox
         '
@@ -77,14 +67,14 @@ Partial Class graph
         '
         Me.selectwhattograph.FormattingEnabled = True
         Me.selectwhattograph.Items.AddRange(New Object() {"Temperature", "Light", "Humidity"})
-        Me.selectwhattograph.Location = New System.Drawing.Point(235, 396)
+        Me.selectwhattograph.Location = New System.Drawing.Point(347, 396)
         Me.selectwhattograph.Name = "selectwhattograph"
         Me.selectwhattograph.Size = New System.Drawing.Size(159, 21)
         Me.selectwhattograph.TabIndex = 3
         '
         'drawgraph
         '
-        Me.drawgraph.Location = New System.Drawing.Point(400, 394)
+        Me.drawgraph.Location = New System.Drawing.Point(512, 394)
         Me.drawgraph.Name = "drawgraph"
         Me.drawgraph.Size = New System.Drawing.Size(101, 23)
         Me.drawgraph.TabIndex = 4
@@ -100,7 +90,6 @@ Partial Class graph
         Me.Controls.Add(Me.selectwhattograph)
         Me.Controls.Add(Me.graphtowriteto)
         Me.Controls.Add(Me.graphingbox)
-        Me.Controls.Add(Me.closegraph)
         Me.Name = "graph"
         Me.Text = "Graphs"
         CType(Me.graphingbox, System.ComponentModel.ISupportInitialize).EndInit()
@@ -109,7 +98,6 @@ Partial Class graph
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents closegraph As System.Windows.Forms.Button
     Friend WithEvents graphingbox As System.Windows.Forms.PictureBox
     Friend WithEvents DataSet1 As System.Data.DataSet
     Friend WithEvents graphtowriteto As System.Windows.Forms.DataVisualization.Charting.Chart
