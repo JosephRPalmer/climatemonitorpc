@@ -80,6 +80,7 @@ Partial Class mainform
         Me.templrp = New System.Windows.Forms.Label()
         Me.backupdb = New System.Windows.Forms.Button()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.webaccess = New System.Windows.Forms.Button()
         Me.networksetting.SuspendLayout()
         Me.alertsettings.SuspendLayout()
         Me.systemstatus.SuspendLayout()
@@ -374,7 +375,7 @@ Partial Class mainform
         '
         Me.Graphs.Location = New System.Drawing.Point(25, 372)
         Me.Graphs.Name = "Graphs"
-        Me.Graphs.Size = New System.Drawing.Size(226, 37)
+        Me.Graphs.Size = New System.Drawing.Size(110, 37)
         Me.Graphs.TabIndex = 3
         Me.Graphs.Text = "To Graphs"
         Me.Graphs.UseVisualStyleBackColor = True
@@ -611,11 +612,21 @@ Partial Class mainform
         Me.backupdb.Text = "Backup"
         Me.backupdb.UseVisualStyleBackColor = True
         '
+        'webaccess
+        '
+        Me.webaccess.Location = New System.Drawing.Point(142, 372)
+        Me.webaccess.Name = "webaccess"
+        Me.webaccess.Size = New System.Drawing.Size(109, 37)
+        Me.webaccess.TabIndex = 9
+        Me.webaccess.Text = "Web Access"
+        Me.webaccess.UseVisualStyleBackColor = True
+        '
         'mainform
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(820, 520)
+        Me.Controls.Add(Me.webaccess)
         Me.Controls.Add(Me.backupdb)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -697,5 +708,6 @@ Partial Class mainform
     Friend WithEvents templrc As System.Windows.Forms.Label
     Friend WithEvents backupdb As System.Windows.Forms.Button
     Friend WithEvents SaveFileDialog1 As System.Windows.Forms.SaveFileDialog
+    Friend WithEvents webaccess As System.Windows.Forms.Button
 
 End Class

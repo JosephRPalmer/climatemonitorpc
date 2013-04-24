@@ -303,4 +303,8 @@ Public Class mainform
     End Sub
 
 
+    Private Sub webaccess_Click(sender As Object, e As EventArgs) Handles webaccess.Click
+        Dim webaccessip As String = systemip + "/view"
+        Process.Start("iexplore", webaccessip)
+    End Sub
 End Class
