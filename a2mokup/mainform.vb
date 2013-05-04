@@ -280,21 +280,24 @@ Public Class mainform
         mainformfunctions.logfile("Pulling Data:" & e.ProgressPercentage.ToString() & "%")
     End Sub
 
-    Private Sub alertsettings_Enter(sender As Object, e As EventArgs) Handles alertsettings.Enter
-
-    End Sub
-
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles lightlrp.Click
-
-    End Sub
+    
 
     Private Sub editalertsettings_Click(sender As Object, e As EventArgs) Handles editalertsettings.Click
         alert.Show()
     End Sub
 
     Private Sub backupdb_Click(sender As Object, e As EventArgs) Handles backupdb.Click
+        Dim copylocation As String = InputBox("Enter the location where you wish to backup the system", "System Backup", My.Computer.FileSystem.SpecialDirectories.MyDocuments)
         Try
-            My.Computer.FileSystem.CopyFile("Resources\a2project.accdb", InputBox("Enter the location where you wish to backup the system", "System Backup", My.Computer.FileSystem.SpecialDirectories.MyDocuments) + "\a2project.accdb")
+            Dim fileExists As Boolean
+            fileExists = My.Computer.FileSystem.FileExists(copylocation + "\a2project.accdb")
+            If fileExists = True Then
+                My.Computer.FileSystem.DeleteFile(copylocation + "\a2project.accdb", FileIO.UIOption.AllDialogs, FileIO.RecycleOption.SendToRecycleBin)
+            Else
+            End If
+            My.Computer.FileSystem.CopyFile("Resources\a2project.accdb", copylocation + "\a2project.accdb")
+
+
         Catch ex As UnauthorizedAccessException
             mainformfunctions.infoinlog("Backup Failed: Unauthorised I/O Operation")
             Exit Sub
@@ -306,5 +309,10 @@ Public Class mainform
     Private Sub webaccess_Click(sender As Object, e As EventArgs) Handles webaccess.Click
         Dim webaccessip As String = systemip + "/view"
         Process.Start("iexplore", webaccessip)
+
+    End Sub
+
+    Private Sub GroupBox2_Enter(sender As Object, e As EventArgs) Handles GroupBox2.Enter
+
     End Sub
 End Class

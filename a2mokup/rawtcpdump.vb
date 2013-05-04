@@ -36,4 +36,8 @@
     Private Sub closetcpdump_Click(sender As Object, e As EventArgs) Handles closetcpdump.Click
         Me.Hide()
     End Sub
+
+    Private Sub rawtcpdump_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

@@ -1,5 +1,6 @@
 ﻿Imports System.Net
 Imports System.ComponentModel
+Imports System.Collections.ObjectModel
 
 Public Class mainformfunctions
     Dim getwe As BackgroundWorker = New BackgroundWorker
@@ -25,6 +26,7 @@ Public Class mainformfunctions
         mainform.Log.Clear()
         Return 1
     End Function
+
     Public Shared Function titlebar(title As String)
         mainform.Text = "CLIMATE SENSOR: " + title
         Return 1
@@ -119,11 +121,13 @@ Public Class mainformfunctions
             mainform.windspeedc.Text = wea.getvalue("<speed>", "</speed>")
             mainform.pressurec.Text = wea.getvalue("<pressure>", "</pressure>")
             mainform.outlookc.Text = wea.getvalue("<weather_text>", "</weather_text>")
+            mainformfunctions.logfile("Weather Updated")
             Return 1
         Else
 
             Return 1
         End If
+        
 
     End Function
     

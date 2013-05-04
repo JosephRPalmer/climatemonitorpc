@@ -47,5 +47,6 @@ Public Class WeatherAPI
             Return "N/A"
         End If
         mainformfunctions.infoinlog("Weather Updated")
+
     End Function
 End Class
